@@ -7,9 +7,10 @@ class MovieDetails extends Component {
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
-
+    console.log(Loading);
+    console.log(movieAPI);
     const { title, storyline, imagePath, genre, rating, subtitle } = {};
-
+    console.log(title);
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
