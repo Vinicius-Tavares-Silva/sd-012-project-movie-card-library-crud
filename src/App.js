@@ -9,6 +9,7 @@ import {
 } from './pages';
 import './App.css';
 
+// prettier-ignore
 function App() {
   return (
     <BrowserRouter>
@@ -16,11 +17,11 @@ function App() {
         <h1 className="page-title">Movie Card Library CRUD</h1>
       </header>
       <Switch>
-        <Route exact path="/" component={MovieList} />
-        <Route exact path="/movies/new" component={NewMovie} />
-        <Route exact path="/movies/:id" component={MovieDetails} />
-        <Route exact path="/movies/:id/edit" component={EditMovie} />
-        <Route component={NotFound} />
+        <Route exact path="/" component={ MovieList } />
+        <Route exact path="/movies/new" component={ NewMovie } />
+        <Route exact path="/movies/:id" component={ MovieDetails } />
+        <Route exact path="/movies/:id/edit" component={ EditMovie } />
+        <Route component={ NotFound } />
       </Switch>
       <Link to="/movies/new">ADICIONAR CARTÃO</Link>
     </BrowserRouter>

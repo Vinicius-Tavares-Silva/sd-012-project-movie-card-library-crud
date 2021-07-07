@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { MovieCard, Loading } from '../components';
-
 import * as movieAPI from '../services/movieAPI';
 
+// prettier-ignore
 class MovieList extends Component {
   constructor() {
     super();
@@ -14,22 +14,25 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    movieAPI.getMovies()
-      .then((data) => this.setState({ movies: data}))
-      .then(() => this.setState({ response: true }))
+    movieAPI
+      .getMovies()
+      .then((data) => this.setState({ movies: data }))
+      .then(() => this.setState({ response: true }));
   }
 
   render() {
     const { movies, response } = this.state;
 
     // Render Loading here if the request is still happening
-    if( !response ) {
+    if (!response) {
       return <Loading />;
     }
 
     return (
       <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        {movies.map((movie) => (
+          <MovieCard key={ movie.title } movie={ movie } />
+        ))}
       </div>
     );
   }
