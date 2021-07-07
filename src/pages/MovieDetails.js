@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { getMovie } from '../services/movieAPI';
 import { Loading } from '../components';
 
+// import * as movieAPI from '../services/movieAPI';
+
 class MovieDetails extends Component {
   constructor() {
     super();
@@ -25,12 +27,13 @@ class MovieDetails extends Component {
     return this.main();
   }
 
-  linkEdit(id) {
+  linkEdit() {
+    const { id } = this.state;
     return (`/movies/${id}/edit`);
   }
 
   main() {
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle } = this.state;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -39,7 +42,7 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={ this.linkEdit(id) }>
+        <Link to={ this.linkEdit() }>
           EDITAR
         </Link>
         <Link to="/">
