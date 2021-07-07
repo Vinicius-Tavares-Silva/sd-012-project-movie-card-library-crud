@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
+// o repositório do colega Patrick Dack foi consultado para o desenvolvimento desse codigo
+
 class MovieDetails extends Component {
   constructor() {
     super();
@@ -56,7 +58,10 @@ class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
-  match: PropTypes.objectOf(Object).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired }).isRequired,
 };
 
 export default MovieDetails;

@@ -3,3 +3,6 @@ body {
   box-sizing: border-box;
 }
 
+input, textarea, select {
+  margin: 10px;
+}
