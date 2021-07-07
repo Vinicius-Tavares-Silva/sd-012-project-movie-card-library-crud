@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -34,6 +35,7 @@ class MovieDetails extends Component {
       imagePath,
       genre,
       rating,
+      id,
       subtitle } = this.state.movieDetails;
     const { loading } = this.state;
     if (loading) {
@@ -48,6 +50,8 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <Link to="/">VOLTAR</Link>
+        <Link to={ `${id}/edit` }>EDITAR</Link>
       </div>
     );
   }
