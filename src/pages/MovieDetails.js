@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import '../css/movieDetails.css';
 
 import * as movieAPI from '../services/movieAPI';
 import Loading from '../components/Loading';
@@ -52,19 +53,34 @@ class MovieDetails extends Component {
     if (loading) return <Loading />;
 
     return (
-      <div data-testid="movie-details">
+      <div data-testid="movie-details" className="movie-details">
         <div>
           <img alt="Movie Cover" src={ `../${imagePath}` } />
-          <p>{ `Title: ${title}` }</p>
-          <p>{ `Subtitle: ${subtitle}` }</p>
-          <p>{ `Storyline: ${storyline}` }</p>
-          <p>{ `Genre: ${genre}` }</p>
-          <p>{ `Rating: ${rating}` }</p>
+          <p>
+            <strong>{ 'Título: '}</strong>
+            {title}
+          </p>
+          <p>
+            <strong>{ 'Subtítulo: '}</strong>
+            {subtitle}
+          </p>
+          <p>
+            <strong>{ 'Sinopse: '}</strong>
+            {storyline}
+          </p>
+          <p>
+            <strong>{ 'Gênero: '}</strong>
+            {genre}
+          </p>
+          <p>
+            <strong>{ 'Avaliação: '}</strong>
+            {rating}
+          </p>
         </div>
         <div className="details-button">
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-          <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
           <Link to="/">VOLTAR</Link>
+          <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
         </div>
       </div>
     );
