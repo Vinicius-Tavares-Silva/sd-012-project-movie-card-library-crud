@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
+import '../styles/movieDetails.css';
+
 export default class MovieDetails extends Component {
   constructor() {
     super();
@@ -43,7 +45,7 @@ export default class MovieDetails extends Component {
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
 
     return (
-      <div data-testid="movie-details">
+      <div data-testid="movie-details" className="details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>

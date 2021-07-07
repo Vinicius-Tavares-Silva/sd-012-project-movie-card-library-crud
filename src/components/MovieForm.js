@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import '../styles/movieForm.css';
+
 export default class MovieForm extends Component {
   constructor(props) {
     super(props);
@@ -21,8 +23,9 @@ export default class MovieForm extends Component {
     const { title } = this.state;
 
     return (
-      <div>
+      <div className="movie-title">
         <label htmlFor="movie_title">
+          Título
           <input
             placeholder="Insira o título"
             id="movie_title"
@@ -31,7 +34,6 @@ export default class MovieForm extends Component {
             value={ title }
             onChange={ (event) => this.updateMovie('title', event.target.value) }
           />
-          Título
         </label>
       </div>
     );
@@ -41,8 +43,9 @@ export default class MovieForm extends Component {
     const { subtitle } = this.state;
 
     return (
-      <div>
+      <div className="movie-subtitle">
         <label htmlFor="movie_subtitle">
+          Subtítulo
           <input
             placeholder="Insira o subtítulo"
             id="movie_subtitle"
@@ -50,7 +53,6 @@ export default class MovieForm extends Component {
             value={ subtitle }
             onChange={ (event) => this.updateMovie('subtitle', event.target.value) }
           />
-          Subtítulo
         </label>
       </div>
     );
@@ -60,8 +62,9 @@ export default class MovieForm extends Component {
     const { imagePath } = this.state;
 
     return (
-      <div className="row">
+      <div className="movie-image">
         <label htmlFor="movie_image">
+          Imagem
           <input
             placeholder="Insira o caminho da imagem"
             id="movie_image"
@@ -69,7 +72,6 @@ export default class MovieForm extends Component {
             value={ imagePath }
             onChange={ (event) => this.updateMovie('imagePath', event.target.value) }
           />
-          Imagem
         </label>
       </div>
     );
@@ -79,14 +81,16 @@ export default class MovieForm extends Component {
     const { storyline } = this.state;
 
     return (
-      <div>
+      <div className="movie-storyline">
         <label htmlFor="movie_storyline">
+          Sinopse
           <textarea
             id="movie_storyline"
+            cols="50"
+            rows="8"
             value={ storyline }
             onChange={ (event) => this.updateMovie('storyline', event.target.value) }
           />
-          Sinopse
         </label>
       </div>
     );
@@ -95,7 +99,7 @@ export default class MovieForm extends Component {
   renderGenreSelection() {
     const { genre } = this.state;
     return (
-      <div>
+      <div className="movie-genre">
         <label htmlFor="movie_genre">
           Gênero
           <select
@@ -116,8 +120,9 @@ export default class MovieForm extends Component {
   renderRatingInput() {
     const { rating } = this.state;
     return (
-      <div>
+      <div className="movie-rating">
         <label htmlFor="movie_rating">
+          Avaliação
           <input
             placeholder="Dê a avaliação do filme"
             id="movie_rating"
@@ -128,7 +133,6 @@ export default class MovieForm extends Component {
             value={ rating }
             onChange={ (event) => this.updateMovie('rating', event.target.value) }
           />
-          Avaliação
         </label>
       </div>
     );
@@ -136,7 +140,7 @@ export default class MovieForm extends Component {
 
   renderSubmitButton() {
     return (
-      <div>
+      <div className="submit-btn">
         <button
           type="button"
           onClick={ this.handleSubmit }
