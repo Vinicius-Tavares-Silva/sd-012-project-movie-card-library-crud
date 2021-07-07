@@ -13,7 +13,7 @@ function App() {
       <h1>Movie Card Library CRUD</h1>
       <Switch>
         <Route exact path="/" component={ MovieList } />
-        <Route path="/movies/new" component={ NewMovie } />
+        <Route exact path="/movies/new" component={ NewMovie } />
         <Route exact path="/movies/:id" render={ (p) => <MovieDetails { ...p } /> } />
         <Route exact path="/movies/:id/edit" render={ (p) => <EditMovie { ...p } /> } />
         <Route path="*" component={ NotFound } />
