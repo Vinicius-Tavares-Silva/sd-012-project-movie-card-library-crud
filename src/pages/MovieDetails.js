@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -14,6 +15,7 @@ class MovieDetails extends Component {
     };
   }
 
+  /* metodo para percorrer match { params: {id}}, aula 13.2 do Prof Icaro da turma 8 */
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((data) => {
@@ -26,7 +28,7 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie: { title, storyline, imagePath, genre, rating, subtitle },
+    const { movie: { title, storyline, imagePath, genre, rating, subtitle, id },
       loading, shouldRedirect } = this.state;
 
     if (loading) return <Loading />;
@@ -46,5 +48,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
