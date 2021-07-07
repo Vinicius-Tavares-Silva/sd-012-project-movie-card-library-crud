@@ -25,6 +25,12 @@ class MovieDetails extends Component {
   }
   // função getMovie no arquivo movieAPI.js
 
+  // Requisito 7
+  async handleDelete(deleteMovie) {
+    await movieAPI.deleteMovie(deleteMovie);
+  }
+  // função deleteMovie no arquivo movieAPI.js
+
   render() {
     const { movie, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
@@ -41,6 +47,9 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <button type="button" onClick={ () => this.handleDelete(id) }>
+          <Link to="/">DELETAR</Link>
+        </button>
       </div>
     );
   }
