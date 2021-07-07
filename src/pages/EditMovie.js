@@ -25,8 +25,8 @@ class EditMovie extends Component {
       .then((result) => this.setState({ movie: result, status: '' }));
   }
 
-  // Idéia do asyn/await tirada do repositório do colega Roberval, source: https://github.com/tryber/sd-012-project-movie-card-library-crud/tree/roberval-filho-movie-cards-library-crud
-  // E de usar a função updateMovie do colega colega Thalles, source: https://github.com/tryber/sd-012-project-movie-card-library-crud/tree/thalles-carneiro-project-movie-card-library-crud
+  // Idéia do asyn/await tirada do repositório do colega Roberval, source: https://github.com/tryber/sd-012-project-movie-card-library-crud/pull/83
+  // E de usar a função updateMovie do colega colega Thalles, source: https://github.com/tryber/sd-012-project-movie-card-library-crud/pull/1
   // função updateMovie no arquivo movieAPI.js
 
   async handleSubmit(updatedMovie) {
