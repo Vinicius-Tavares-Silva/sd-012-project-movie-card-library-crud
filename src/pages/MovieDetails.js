@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import './styles.css';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -40,16 +41,18 @@ class MovieDetails extends Component {
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movies;
 
     return (
-      <div data-testid="movie-details">
+      <div data-testid="movie-details" className="details-card">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <h4>{`Title: ${title}`}</h4>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to="/">VOLTAR</Link>
-        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
+        <nav className="nav-details-links">
+          <span><Link to="/">VOLTAR</Link></span>
+          <span><Link to={ `/movies/${id}/edit` }>EDITAR</Link></span>
+          <span><Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link></span>
+        </nav>
       </div>
     );
   }

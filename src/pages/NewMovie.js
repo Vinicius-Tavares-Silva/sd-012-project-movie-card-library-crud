@@ -28,7 +28,7 @@ class NewMovie extends Component {
     const { redirect, movie } = this.state;
     if (redirect) return <Redirect to="/" />;
     return (
-      <div data-testid="new-movie">
+      <div data-testid="new-movie" className="details-card">
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );

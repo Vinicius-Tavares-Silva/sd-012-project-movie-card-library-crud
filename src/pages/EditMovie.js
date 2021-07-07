@@ -23,11 +23,9 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
-    if (this.checkUpdate(updatedMovie)) {
-      this.setState({
-        shouldRedirect: true,
-      });
-    }
+    this.setState({
+      shouldRedirect: this.checkUpdate(updatedMovie),
+    });
   }
 
   async getMovie(id) {
@@ -48,7 +46,8 @@ class EditMovie extends Component {
     if (shouldRedirect) return <Redirect to="/" />;
     if (status === 'loading') return <Loading />;
     return (
-      <div data-testid="edit-movie">
+      <div data-testid="edit-movie" className="details-card">
+        <h2>Editar</h2>
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );
