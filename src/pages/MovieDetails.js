@@ -20,6 +20,7 @@ class MovieDetails extends Component {
     const { match } = this.props;
     const { params } = match;
     const { id } = params;
+    // ou const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id)
       .then((result) => this.setState({ movie: result, loading: false }));
   }
