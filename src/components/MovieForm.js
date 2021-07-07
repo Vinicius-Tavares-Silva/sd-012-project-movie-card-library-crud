@@ -148,7 +148,7 @@ class MovieForm extends React.Component {
 
   renderSubmitButton() {
     return (
-      <div>
+      <div className="button-div">
         <button
           className="button"
           type="button"
@@ -188,18 +188,18 @@ MovieForm.propTypes = {
     storyline: PropTypes.string,
     subtitle: PropTypes.string,
     title: PropTypes.string,
-  }).isRequired,
+  }),
 };
 
-// MovieForm.defaultProps = {
-//   movie: {
-//     title: '',
-//     subtitle: '',
-//     imagePath: '',
-//     storyline: '',
-//     genre: 'action',
-//     rating: 0,
-//   },
-// };
+MovieForm.defaultProps = {
+  movie: {
+    title: '',
+    subtitle: '',
+    imagePath: '',
+    storyline: '',
+    genre: 'action',
+    rating: 0,
+  },
+};
 
 export default MovieForm;

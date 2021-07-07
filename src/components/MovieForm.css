@@ -1,12 +1,11 @@
 form {
-  align-self: center;
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  margin: 20px 30px;
+  margin: 20px auto;
   max-width: 800px;
-  min-width: 400px;
+  min-width: 500px;
   padding: 20px 0;
   width: 40%;
 }
@@ -14,12 +13,13 @@ form {
 .input-text-div {
   display: flex;
   flex-direction: column;
-  margin: 5px 20px;
+  margin: 5px 40px;
 }
 
 .input-text {
   border: none;
   border-radius: 8px;
+  margin-top: 5px;
   padding: 5px 10px;
   width: 100%;
 }
@@ -27,47 +27,55 @@ form {
 .input-number-div {
   display: flex;
   flex-direction: column;
-  margin: 5px 20px;
+  margin: 5px 40px;
 }
 
 .input-number {
   border: none;
   border-radius: 8px;
+  margin-left: 5px;
   padding: 5px 10px;
-  width: 70px;
+  width: 40px;
 }
 
 .select-div {
   display: flex;
   flex-direction: column;
-  margin: 5px 20px;
+  margin: 5px 40px;
 }
 
 .select {
   border: none;
   border-radius: 8px;
+  margin-left: 5px;
   padding: 5px 10px;
-  width: 200px;
+  width: 100px;
 }
 
 .textarea-div {
   display: flex;
   flex-direction: column;
-  margin: 5px 20px;
+  margin: 5px 40px;
 }
 
 .textarea {
   border: none;
   border-radius: 8px;
+  height: 50px;
+  margin-top: 5px;
   padding: 5px 10px;
   resize: none;
   width: 100%;
 }
 
+.button-div {
+  align-self: center;
+}
+
 .button {
+  align-self: center;
   background-color: rgb(50, 141, 50);
   border: none;
   border-radius: 8px;
-  margin: 10px 20px;
   padding: 5px 10px;
 }
