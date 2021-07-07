@@ -7,7 +7,7 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor() {
     super();
-
+    this.deleteMovie = this.deleteMovie.bind(this);
     this.state = {
       movie: {},
       loading: true,
@@ -21,6 +21,12 @@ class MovieDetails extends Component {
       .then((data) => {
         this.setState({ movie: data, loading: false });
       });
+  }
+
+  deleteMovie() {
+    const { match: { params: { id } } } = this.props;
+    const { deleteMovie } = movieAPI;
+    deleteMovie(id);
   }
 
   render() {
@@ -41,6 +47,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }
