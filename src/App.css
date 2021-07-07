@@ -2,7 +2,12 @@ body {
   background-color: whitesmoke;
   box-sizing: border-box;
   font-size: 16px;
-  margin-top: 0px;
+}
+
+.loading {
+  position: absolute;
+	left: 50%;
+	top: 50%
 }
 
 .movie-card-header {
@@ -22,8 +27,10 @@ body {
 
 .movie-list {
   display: flex;
-  flex-flow: row wrap;
-  padding: 48px 30px;
+  flex-direction: row;
+  justify-content: center;  
+  padding: 48px;
+   
 }
 
 .movie-card {
