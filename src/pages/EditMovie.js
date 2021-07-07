@@ -19,12 +19,10 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    this.rightMovie();
+    this.fetchMovie();
   }
 
   handleSubmit(updatedMovie) {
-    // const { match: { params: { id } } } = this.props;
-    // updatedMovie.id = id;
     movieAPI.updateMovie(updatedMovie)
       .then(() => this.setState({
         loading: false,
@@ -32,7 +30,7 @@ class EditMovie extends Component {
       }));
   }
 
-  async rightMovie() {
+  async fetchMovie() {
     const { match: { params: { id } } } = this.props;
     this.setState({
       loading: true,
