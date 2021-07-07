@@ -1,0 +1,73 @@
+form {
+  align-self: center;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 30px;
+  max-width: 800px;
+  min-width: 400px;
+  padding: 20px 0;
+  width: 40%;
+}
+
+.input-text-div {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 20px;
+}
+
+.input-text {
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.input-number-div {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 20px;
+}
+
+.input-number {
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  width: 70px;
+}
+
+.select-div {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 20px;
+}
+
+.select {
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  width: 200px;
+}
+
+.textarea-div {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 20px;
+}
+
+.textarea {
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  resize: none;
+  width: 100%;
+}
+
+.button {
+  background-color: rgb(50, 141, 50);
+  border: none;
+  border-radius: 8px;
+  margin: 10px 20px;
+  padding: 5px 10px;
+}
