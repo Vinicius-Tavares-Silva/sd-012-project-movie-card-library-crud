@@ -29,6 +29,7 @@ class MovieDetails extends Component {
   }
 
   render() {
+    const { movieDetails } = this.state;
     const {
       title,
       storyline,
@@ -36,7 +37,7 @@ class MovieDetails extends Component {
       genre,
       rating,
       id,
-      subtitle } = this.state.movieDetails;
+      subtitle } = movieDetails;
     const { loading } = this.state;
     if (loading) {
       return <Loading />;
