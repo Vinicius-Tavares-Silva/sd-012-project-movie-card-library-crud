@@ -41,7 +41,7 @@ class EditMovie extends Component {
 
   render() {
     const { shouldRedirect, movie, loading } = this.state;
-    if (shouldRedirect) { return <Redirect to="/" />; }
+    if (shouldRedirect) return <Redirect to="/" />;
 
     return (
       <div data-testid="edit-movie">
