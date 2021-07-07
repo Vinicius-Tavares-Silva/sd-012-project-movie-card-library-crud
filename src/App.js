@@ -10,12 +10,12 @@ import './App.css';
 function App() {
   return (
     <Router>
-    <h1>Movie Card CRUD</h1>
+    <h1>Movie Card Crud</h1>
     <Switch>
     <Route path="/" exact component={ MovieList } />
-    <Route path="/movies/:id"  component={ MovieDetails } />
     <Route path="/movies/new"  component={ NewMovie } />
     <Route path="/movies/:id/edit" component={ EditMovie } />
+    <Route path="/movies/:id"  component={ MovieDetails } />
     <Route path='*' exact={true} component={NotFound} />
     </Switch>
   </Router>
