@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Input from './generics/Input';
 import Select from './generics/Select';
 import genres from '../genres';
-// import '../css/searchBar.css';
+import '../css/searchBar.css';
 
 class SearchBar extends Component {
   render() {
