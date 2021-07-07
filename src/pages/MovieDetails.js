@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { getMovie } from '../services/movieAPI';
+import { getMovie, deleteMovie } from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -15,6 +15,7 @@ class MovieDetails extends Component {
 
     this.callDetails = this.callDetails.bind(this);
     this.rightMovie = this.rightMovie.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   componentDidMount() {
@@ -30,10 +31,15 @@ class MovieDetails extends Component {
     });
   }
 
+  delete() {
+    const { movie } = this.state;
+    const { id } = movie;
+    deleteMovie(id);
+  }
+
   callDetails() {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-    console.log(movie);
     return (
       <div data-testid="movie-details">
         <p>{ `Title: ${title}` }</p>
@@ -47,6 +53,12 @@ class MovieDetails extends Component {
         </button>
         <button type="button">
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        </button>
+        <button
+          type="button"
+          onClick={ () => this.delete() } // só valida com ARROW FUNCTION
+        >
+          <Link to="/">DELETAR</Link>
         </button>
       </div>
     );
