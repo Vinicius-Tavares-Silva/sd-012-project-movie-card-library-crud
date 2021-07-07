@@ -18,15 +18,14 @@ class MovieList extends Component {
     movieAPI.getMovies().then((result) => {
       this.setState({
         movies: result,
-        loading: false,
       });
     });
   }
 
   render() {
-    const { movies, loading } = this.state;
+    const { movies } = this.state;
 
-    if (loading) {
+    if (!movies.length) {
       return <Loading />;
     }
 
