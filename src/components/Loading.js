@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
-class Loading extends Component {
+class LoadingMsg extends Component {
   render() {
     return (
-      <div>Loading message</div>
+      <div>
+        <div>Carregando...</div>
+      </div>
     );
   }
 }
 
-export default Loading;
+export default LoadingMsg;
