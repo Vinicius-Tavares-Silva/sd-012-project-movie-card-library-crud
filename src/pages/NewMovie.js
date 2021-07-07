@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Redirect } from 'react-router-dom';
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 
@@ -10,6 +10,9 @@ class NewMovie extends Component {
   }
 
   handleSubmit(newMovie) {
+    const { createMovie } = movieAPI;
+    createMovie(newMovie);
+    return <Redirect to="/" />;
   }
 
   render() {

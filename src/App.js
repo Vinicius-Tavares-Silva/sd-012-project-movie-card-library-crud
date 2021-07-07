@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import NewMovie from './pages/NewMovie';
@@ -11,6 +11,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div>Movie Card Library CRUD</div>
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
         <Switch>
           <Route exact path="/" component={ MovieList } />
           <Route exact path="/movies/new" component={ NewMovie } />
