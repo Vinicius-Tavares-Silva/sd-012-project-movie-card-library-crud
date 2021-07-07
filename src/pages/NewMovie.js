@@ -14,7 +14,6 @@ class NewMovie extends Component {
     };
   }
 
-  // newMovie
   handleSubmit(newMovie) {
     this.requestNewMovie(newMovie);
   }
