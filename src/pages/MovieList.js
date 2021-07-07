@@ -11,7 +11,7 @@ class MovieList extends Component {
     this.apiResponse = this.apiResponse.bind(this);
 
     this.state = {
-      movies: [],
+      movies: [], // vai retornar um array inteiro com vários objetos
       loading: true, // acrescentei isso na monitoria
     };
   }
