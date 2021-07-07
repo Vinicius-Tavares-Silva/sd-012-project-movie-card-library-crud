@@ -33,8 +33,8 @@ MovieCard.propTypes = {
     subtitle: PropTypes.string,
     storyline: PropTypes.string,
     imagePath: PropTypes.string,
-    id: PropTypes.string,
-    rating: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }),
 };
 export default MovieCard;
