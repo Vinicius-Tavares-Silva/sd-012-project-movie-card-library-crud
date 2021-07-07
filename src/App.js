@@ -1,17 +1,18 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import NewMovie from './pages/NewMovie';
 import MovieDetails from './pages/MovieDetails';
 import EditMovie from './pages/EditMovie';
 import NotFound from './pages/NotFound';
+import Header from './components/Header';
+import './App.css';
 
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div>Movie Card Library CRUD</div>
-        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
+        <Header />
         <Switch>
           <Route path="/movies/:id/edit" component={ EditMovie } />
           <Route path="/movies/:id" component={ MovieDetails } />

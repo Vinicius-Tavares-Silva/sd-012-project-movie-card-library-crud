@@ -1,7 +1,6 @@
 .movie-list {
   background-color: whitesmoke;
   border-radius: 10px;
-  box-shadow: inset 3px 3px 10px #979ea3 , inset -3px -3px 10px #979ea3;
   display: flex;
   flex-flow: row wrap;
   flex-grow: 1;
