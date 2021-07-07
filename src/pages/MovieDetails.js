@@ -1,13 +1,12 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
-import Loading from '../components/Loading';
 
-export default class MovieDetails extends Component {
+export default class MovieDetails extends React.Component {
   constructor() {
     super();
-
     this.state = {
       loading: true,
       movie: {},
@@ -17,7 +16,6 @@ export default class MovieDetails extends Component {
 
   componentDidMount() {
     const { props: { match: { params: { id } } } } = this;
-
     movieAPI.getMovie(id)
       .then((res) => {
         this.setState({
@@ -62,9 +60,10 @@ export default class MovieDetails extends Component {
   }
 }
 
-// NAO EH ESSE
 MovieDetails.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.object,
-  ).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
 };
