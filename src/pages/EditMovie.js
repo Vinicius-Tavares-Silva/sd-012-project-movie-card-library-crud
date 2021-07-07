@@ -11,7 +11,7 @@ class EditMovie extends Component {
   }
 
   // handleSubmit(updatedMovie) {
-  }
+  // }
 
   render() {
     const { status, shouldRedirect, movie } = this.state;

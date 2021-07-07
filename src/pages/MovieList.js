@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
-import * as movieAPI from '../services/movieAPI';
+// import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
-  constructor() {
+/*   constructor() {
     super();
-
-    this.state = {
-      movies: [],
-      interruptor: true,
-    };
-  }
+ */
+  /* this.state = {
+    movies: [],
+    interruptor: true,
+  };
+}
 
   componentDidMount() {
     this.fetchFunc();
@@ -22,14 +22,14 @@ class MovieList extends Component {
       .then((response) => this.setState({
         movies: response,
         interruptor: false,
-      }));
-  }
+      })); */
+  // }
 
   render() {
     const { movies, interruptor } = this.State;
 
     if (interruptor) {
-      return <Loading/>;
+      return <Loading />;
     }
     return (
       <div data-testid="movie-list">
