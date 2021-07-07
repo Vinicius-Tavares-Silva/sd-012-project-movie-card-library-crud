@@ -17,10 +17,10 @@ class MovieDetails extends Component {
   componentDidMount() {
     const { match } = this.props;
     const { params: { id } } = match;
-    this.upMovie(id);
+    this.getMovie(id);
   }
 
-  async upMovie(id) {
+  async getMovie(id) {
     const resp = await movieAPI.getMovie(id);
     this.setState({
       movies: resp,

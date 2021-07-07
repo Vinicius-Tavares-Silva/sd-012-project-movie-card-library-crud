@@ -8,7 +8,6 @@ class MovieList extends Component {
   constructor(props) {
     super(props);
 
-    // this.getMovies = this.getMovies.bind(this)
     this.state = {
       movies: [],
       loading: true,
