@@ -33,6 +33,7 @@ class MovieDetails extends Component {
   callDetails() {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
+    console.log(movie);
     return (
       <div data-testid="movie-details">
         <p>{ `Title: ${title}` }</p>
