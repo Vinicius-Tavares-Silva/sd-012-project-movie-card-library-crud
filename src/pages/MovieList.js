@@ -26,7 +26,7 @@ class MovieList extends Component {
   render() {
     const { movies } = this.state;
 
-    // Render Loading here if the request is still happening
+    // Render Loading with the message 'Carregando...' here if the request is still happening
 
     return (
       movies.length !== 0 ? (
