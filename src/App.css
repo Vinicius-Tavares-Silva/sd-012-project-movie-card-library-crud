@@ -97,3 +97,69 @@ body {
   filter: brightness(0.8);
   text-decoration: none;
 }
+
+/* Edit Movie */
+.editMovie {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+  padding: 40px;
+  width: 50%;
+}
+
+.labelForm {
+  margin-top: 30px;
+}
+
+.validate {
+  border-width: 0 0 1px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  padding: 7px;
+  width: 100%;
+}
+
+.validate:focus {
+  border-color: brown;
+  border-width: 0 0 3px;
+  margin-top: 8px;
+  outline: 0;
+  transition: 0.5s;
+}
+
+.textareaEdit {
+  border-width: 0 0 1px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  padding: 7px;
+  width: max(100%, 400px);
+}
+
+.textareaEdit:focus {
+  border-color: brown;
+  border-width: 0 0 3px;
+  margin-top: 8px;
+  outline: 0;
+  transition: 0.5s;
+}
+
+.submitButton {
+  border-color: brown;
+  color: brown;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 25px auto 5px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  width: 40%;
+}
+
+.submitButton:hover {
+  background-color: brown;
+  color: white;
+  filter: brightness(0.8);
+  text-decoration: none;
+}

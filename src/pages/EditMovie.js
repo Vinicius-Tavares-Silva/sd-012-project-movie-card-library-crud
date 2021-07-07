@@ -41,7 +41,8 @@ class EditMovie extends Component {
     if (loading) return <Loading />;
 
     return (
-      <div data-testid="edit-movie">
+      <div className="editMovie" data-testid="edit-movie">
+        <h2>Editar Filme</h2>
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );
