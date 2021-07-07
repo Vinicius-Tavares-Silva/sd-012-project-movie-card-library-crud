@@ -17,15 +17,12 @@ class MovieList extends Component {
 
   componentDidMount() {
     this.handleGetMovie();
-
   }
-
 
   async handleGetMovie() {
     const { getMovies } = movieAPI;
     const data = await getMovies();
     this.setState({movies: [...data], load: false })
-    
   }
 
   render() {
@@ -33,7 +30,7 @@ class MovieList extends Component {
 
     // Render Loading here if the request is still happening
     return load 
-    ? <Loading /> 
+    ? <Loading />
     : <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
