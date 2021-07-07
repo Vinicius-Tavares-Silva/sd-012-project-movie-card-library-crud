@@ -1,10 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, BrowserRouter } from 'react-router-dom';
-import MovieList from './pages/MovieList';
-import MovieDetails from './pages/MovieDetails';
-import NewMovie from './pages/NewMovie';
-import NotFound from './pages/NotFound';
-import EditMovie from './pages/EditMovie';
+import { MovieList, MovieDetails, NewMovie, NotFound, EditMovie } from './pages';
+import MovieData from './services/movieData';
 
 import './App.css';
 
@@ -19,7 +16,7 @@ function App() {
           <Route
             exact
             path="/movies/:id"
-            render={ (props) => <MovieDetails { ...props } /> }
+            render={ (props) => <MovieDetails { ...props } movies={ MovieData } /> }
           />
           <Route exact path="/movies/:id/edit" component={ EditMovie } />
           <Route component={ NotFound } />
