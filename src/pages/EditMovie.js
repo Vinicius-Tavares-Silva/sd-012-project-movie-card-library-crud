@@ -24,7 +24,7 @@ export default class EditMovie extends React.Component {
           loading: false,
         });
       })
-      .catch(console.log);
+      .catch((err) => console.log(err));
   }
 
   handleSubmit(updatedMovie) {
@@ -34,7 +34,7 @@ export default class EditMovie extends React.Component {
           redirect: true,
         });
       })
-      .catch(console.log);
+      .catch((err) => console.log(err));
   }
 
   render() {

@@ -46,8 +46,15 @@ export default class MovieDetails extends React.Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <button type="button"><Link to="/">VOLTAR</Link></button>
-        <button type="button"><Link to={ `/movies/${id}/edit` }>EDITAR</Link></button>
+        <button type="button">
+          <Link to="/">VOLTAR</Link>
+        </button>
+        <button type="button">
+          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        </button>
+        <button type="button">
+          <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
+        </button>
       </div>
     );
   }
