@@ -30,14 +30,6 @@ class EditMovie extends Component {
     }));
   }
 
-  fetchMovies() {
-    const { getMovies } = movieAPI;
-    getMovies().then((result) => this.setState({
-      movie: result,
-      status: '',
-    }));
-  }
-
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
