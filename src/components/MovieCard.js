@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import '../styles/movieCard.css';
+import '../styles/moviecard.css';
 
 export default class MovieCard extends Component {
   render() {

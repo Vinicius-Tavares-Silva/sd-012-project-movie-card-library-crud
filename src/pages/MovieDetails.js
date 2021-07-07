@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
-import '../styles/movieDetails.css';
+import '../styles/moviedetails.css';
 
 export default class MovieDetails extends Component {
   constructor() {

@@ -5,7 +5,7 @@ import * as movieAPI from '../services/movieAPI';
 
 import { Loading, MovieCard } from '../components';
 
-import '../styles/movieList.css';
+import '../styles/movielist.css';
 
 export default class MovieList extends Component {
   constructor() {
