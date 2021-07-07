@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import * as routes from './pages/index';
 
+import './App.css';
+
 function App() {
   const { MovieList, NewMovie, EditMovie, MovieDetails, NotFound } = routes;
   return (
