@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -18,7 +19,7 @@ class MovieDetails extends Component {
   }
 
   async changeStates() {
-    const { id } = this.props;
+    const { match: { params: { id } } } = this.props;
     const request = await movieAPI.getMovie(id);
     this.setState({
       movies: request,
@@ -28,22 +29,27 @@ class MovieDetails extends Component {
 
   displayDetails() {
     const { movies } = this.state;
-    const { storyline, imagePath, genre, rating, subtitle } = movies;
+    const { title, storyline, imagePath, genre, rating, subtitle } = movies;
+    const { match: { params: { id } } } = this.props;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <button type="button">
+          <Link to="/">VOLTAR</Link>
+        </button>
+        <button type="button">
+          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        </button>
       </div>
     );
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-
     const { loading } = this.state;
 
     return (
@@ -55,7 +61,15 @@ class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
-  id: PropTypes.number.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }),
+};
+
+MovieDetails.defaultProps = {
+  match: '',
 };
 
 export default MovieDetails;
