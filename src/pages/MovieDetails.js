@@ -1,48 +1,57 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
     super();
     this.state = {
+      movie: {},
       loading: true,
-      movie: undefined,
     };
-    this.fetchMovie = this.fetchMovie.bind(this);
+    this.fetchApi = this.fetchApi.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
+    this.fetchApi();
+  }
+
+  async handleDelete() {
     const { match } = this.props;
     const { params } = match;
     const { id } = params;
-    this.fetchMovie(id);
+    await movieAPI.deleteMovie(id);
   }
 
-  async fetchMovie(id) {
-    const request = await movieAPI.getMovie(id);
-    this.setState({ loading: false, movie: request });
+  async fetchApi() {
+    const { match } = this.props;
+    const { params } = match;
+    const { id } = params;
+    const movie = await movieAPI.getMovie(id);
+    this.setState({
+      movie,
+      loading: false,
+    });
   }
 
   render() {
-    const { loading, movie } = this.state;
+    const { movie, loading } = this.state;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
     if (loading) return <Loading />;
-
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-
     return (
       <div data-testid="movie-details">
-        <h1>{title}</h1>
+        <h4>{ `Title: ${title}` }</h4>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
+        <p>{ `Subtitle: ${subtitle}` }</p>
+        <p>{ `Storyline: ${storyline}` }</p>
+        <p>{ `Genre: ${genre}` }</p>
+        <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        <Link to="tbd">DELETAR</Link>
+        <Link to="/" onClick={ this.handleDelete }>DELETAR</Link>
       </div>
     );
   }
@@ -51,8 +60,8 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    }),
+      id: PropTypes.number.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 
