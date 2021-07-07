@@ -41,18 +41,20 @@ class MovieDetails extends Component {
     }
 
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Title: ${title}` }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        <nav>
-          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-          <Link to="/">VOLTAR</Link>
-          <Link to="/" onClick={ this.handleDelete }>DELETAR</Link>
-        </nav>
+      <div className="container">
+        <div className="card" data-testid="movie-details">
+          <img alt="Movie Cover" src={ `../${imagePath}` } />
+          <p>{ `Title: ${title}` }</p>
+          <p className="card-body">{ `Subtitle: ${subtitle}` }</p>
+          <p className="card-body">{ `Storyline: ${storyline}` }</p>
+          <p className="card-body">{ `Genre: ${genre}` }</p>
+          <p className="card-body">{ `Rating: ${rating}` }</p>
+          <nav className="card-footer">
+            <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+            <Link to="/">VOLTAR</Link>
+            <Link to="/" onClick={ this.handleDelete }>DELETAR</Link>
+          </nav>
+        </div>
       </div>
     );
   }

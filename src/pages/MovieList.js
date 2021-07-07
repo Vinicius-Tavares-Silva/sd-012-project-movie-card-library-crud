@@ -27,10 +27,10 @@ class MovieList extends Component {
 
     return (
       <>
-        <div>
+        <div className="add-header">
           <Link to="/movies/new">ADICIONAR CARTÃO</Link>
         </div>
-        <div data-testid="movie-list">
+        <div className="container" data-testid="movie-list">
           {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
         </div>
       </>

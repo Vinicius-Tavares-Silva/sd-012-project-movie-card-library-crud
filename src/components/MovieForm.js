@@ -46,6 +46,7 @@ class MovieForm extends React.Component {
           <input
             placeholder="Insira o subtítulo"
             id="movie_subtitle"
+            className="validate"
             type="text"
             value={ subtitle }
             onChange={ (event) => this.updateMovie('subtitle', event.target.value) }
@@ -149,7 +150,7 @@ class MovieForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="form-container">
         <form>
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
