@@ -32,16 +32,18 @@ class MovieDetails extends Component {
     if (loading) return <Loading />;
 
     return (
-      <div data-testid="movie-details">
+      <div className="movieDetail" data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Title: ${title}` }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        <div className="buttonAction">
-          <Link to="/">VOLTAR</Link>
-          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <div className="detailcontent">
+          <p>{ `Title: ${title}` }</p>
+          <p>{ `Subtitle: ${subtitle}` }</p>
+          <p>{ `Storyline: ${storyline}` }</p>
+          <p>{ `Genre: ${genre}` }</p>
+          <p>{ `Rating: ${rating}` }</p>
+        </div>
+        <div className="detailcontentActions">
+          <Link className="button" to="/">VOLTAR</Link>
+          <Link className="button" to={ `/movies/${id}/edit` }>EDITAR</Link>
         </div>
       </div>
     );
