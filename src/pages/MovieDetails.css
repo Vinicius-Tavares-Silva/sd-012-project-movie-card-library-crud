@@ -1,17 +1,17 @@
 .movieDetails {
-  display: flexbox;
+  display: flex;
   flex-flow: column;
   text-align: center;
+  margin: 10px;
 }
 
 .divImage {
-  text-align: center;
+  align-self: center;
   width: 70%;
 }
 
 .divLinks {
   display: flex;
   justify-content: center;
-  margin: 3%;
-  text-align: center;
+  margin: 2%;
 }

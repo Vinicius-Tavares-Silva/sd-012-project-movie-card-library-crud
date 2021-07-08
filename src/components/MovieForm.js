@@ -1,4 +1,5 @@
 import React from 'react';
+import './MovieForm.css';
 import PropTypes from 'prop-types';
 
 class MovieForm extends React.Component {
@@ -21,7 +22,7 @@ class MovieForm extends React.Component {
     const { title } = this.state;
 
     return (
-      <div>
+      <div id="titulo">
         <label htmlFor="movie_title">
           <input
             placeholder="Insira o título"
@@ -41,7 +42,7 @@ class MovieForm extends React.Component {
     const { subtitle } = this.state;
 
     return (
-      <div>
+      <div id="subtitulo">
         <label htmlFor="movie_subtitle">
           <input
             placeholder="Insira o subtítulo"
@@ -60,7 +61,7 @@ class MovieForm extends React.Component {
     const { imagePath } = this.state;
 
     return (
-      <div className="row">
+      <div id="imagePath" className="row">
         <label htmlFor="movie_image">
           <input
             placeholder="Insira o caminho da imagem"
@@ -79,7 +80,7 @@ class MovieForm extends React.Component {
     const { storyline } = this.state;
 
     return (
-      <div>
+      <div id="sinopse">
         <label htmlFor="movie_storyline">
           <textarea
             id="movie_storyline"
@@ -95,7 +96,7 @@ class MovieForm extends React.Component {
   renderGenreSelection() {
     const { genre } = this.state;
     return (
-      <div>
+      <div id="genero">
         <label htmlFor="movie_genre">
           Gênero
           <select
@@ -116,7 +117,7 @@ class MovieForm extends React.Component {
   renderRatingInput() {
     const { rating } = this.state;
     return (
-      <div>
+      <div id="nota">
         <label htmlFor="movie_rating">
           <input
             placeholder="Dê a avaliação do filme"
@@ -149,7 +150,7 @@ class MovieForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="divFormulario">
         <form>
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
