@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { shape, string, bool } from 'prop-types';
 import { MovieForm, Loading } from '../components';
 import { getMovie, updateMovie } from '../services/movieAPI';
 
@@ -46,5 +47,16 @@ class EditMovie extends Component {
     return doObject[getInfo];
   }
 }
+
+EditMovie.propTypes = {
+  match: shape({
+    isExact: bool.isRequired,
+    params: shape({
+      id: string.isRequired,
+    }).isRequired,
+    path: string.isRequired,
+    url: string.isRequired,
+  }).isRequired,
+};
 
 export default EditMovie;

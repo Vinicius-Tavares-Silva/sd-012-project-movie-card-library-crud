@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { getMovie } from '../services/movieAPI';
+import { Link, Redirect } from 'react-router-dom';
+import { shape, string, bool } from 'prop-types';
+import { getMovie, deleteMovie } from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -22,6 +23,7 @@ class MovieDetails extends Component {
   showMovieDatails = () => {
     const { movie } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { deleteCard } = this;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -32,17 +34,43 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ deleteCard }>DELETAR</Link>
       </div>
     );
   }
 
+  deleteCard = (event) => {
+    event.preventDefault();
+    const { movie } = this.state;
+    const { id } = movie;
+    deleteMovie(id).then(this.setState({ getInfo: 2 }));
+  }
+
   callLoading = () => <Loading />
+
+  goMovieList = () => <Redirect to="/" />
 
   render() {
     const { getInfo } = this.state;
-    const { callLoading, showMovieDatails } = this;
-    return (getInfo === 0) ? callLoading() : showMovieDatails();
+    const { callLoading, showMovieDatails, goMovieList } = this;
+    const doObject = {
+      0: callLoading(),
+      1: showMovieDatails(),
+      2: goMovieList(),
+    };
+    return doObject[getInfo];
   }
 }
+
+MovieDetails.propTypes = {
+  match: shape({
+    isExact: bool.isRequired,
+    params: shape({
+      id: string.isRequired,
+    }).isRequired,
+    path: string.isRequired,
+    url: string.isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
