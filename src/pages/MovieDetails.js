@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import { Link } from 'react-router-dom';
 
 export default class MovieDetails extends Component {
   constructor({ match }) {
@@ -47,6 +49,12 @@ export default class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
+        <button type="button">
+          <Link to="/">VOLTAR</Link>
+        </button>
+        <button type="button">
+          <Link to="/">EDITAR</Link>
+        </button>
       </div>
     );
   }
