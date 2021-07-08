@@ -1,42 +1,46 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
-import Loading from '../components/Loading';
-// import * as movieAPI from '../services/movieAPI';
+import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
-/*   constructor() {
+  constructor() {
     super();
- */
-  /* this.state = {
-    movies: [],
-    interruptor: true,
-  };
-}
 
-  componentDidMount() {
-    this.fetchFunc();
+    this.state = {
+      loading: true,
+      movies: [],
+    };
   }
 
-  fetchfunc() {
-    movieAPI.getMovies()
-      .then((response) => this.setState({
-        movies: response,
-        interruptor: false,
-      })); */
-  // }
+  componentDidMount() {
+    const { getMovies } = movieAPI;
+    getMovies();
+    this.moviesAPI();
+  }
+
+  // Render Loading
+  async moviesAPI() {
+    const { getMovies } = movieAPI;
+    const arrayOfMovies = await getMovies();
+    this.setState({
+      loading: false,
+      movies: arrayOfMovies,
+    });
+  }
 
   render() {
-    const { movies, interruptor } = this.State;
-
-    if (interruptor) {
-      return <Loading />;
-    }
-    return (
+    const { movies, loading } = this.state;
+    const loadedMovies = (
       <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-      </div>
+      </div>);
+    const loadingText = <span>Carregando...</span>;
+
+    return (
+      <p>
+        {loading ? loadingText : loadedMovies}
+      </p>
     );
   }
 }
-
 export default MovieList;
