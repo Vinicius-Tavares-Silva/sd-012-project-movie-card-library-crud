@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import NewMovie from './pages/NewMovie';
@@ -9,7 +9,8 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
+      <div>Movie Card Library CRUD</div>
       <Switch>
         <Route exact path="/" component={ MovieList } />
         <Route path="/movies/:id" component={ MovieDetails } />
@@ -17,7 +18,7 @@ function App() {
         <Route path="/movies/:id/edit" component={ EditMovie } />
         <Route component={ NotFound } />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 
