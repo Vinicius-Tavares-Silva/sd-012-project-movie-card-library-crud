@@ -25,9 +25,6 @@ class MovieDetails extends Component {
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-
     const { movies, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movies;
 
@@ -36,6 +33,8 @@ class MovieDetails extends Component {
       <div data-testid="movie-details">
         <Link to={ `/movies/${id}/edit` }> EDITAR </Link>
         <Link to="/"> VOLTAR </Link>
+        {/* onClick for tirado do repositório de Thalles Carneiro em https://github.com/tryber/sd-012-project-movie-card-library-crud/pull/1/files */}
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }> DELETAR </Link>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
