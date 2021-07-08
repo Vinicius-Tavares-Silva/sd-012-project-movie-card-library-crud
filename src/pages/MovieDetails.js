@@ -7,7 +7,7 @@ import { Loading } from '../components';
 
 export default class MovieDetails extends Component {
   constructor({ match }) {
-    super({ match });
+    super(match);
 
     this.state = {
       loading: true,
