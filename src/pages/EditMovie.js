@@ -1,33 +1,49 @@
 import React, { Component } from 'react';
-
-import { MovieForm } from '../components';
-import * as movieAPI from '../services/movieAPI';
+import { Redirect } from 'react-router-dom';
+import { MovieForm, Loading } from '../components';
+import { getMovie, updateMovie } from '../services/movieAPI';
 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      getInfo: 0,
+      movie: {},
+    };
   }
 
-  handleSubmit(updatedMovie) {
+  componentDidMount() {
+    const { match } = this.props;
+    const { id } = match.params;
+    getMovie(id).then((mObj) => this.setState({ movie: { ...mObj }, getInfo: 1 }));
   }
 
-  render() {
-    const { status, shouldRedirect, movie } = this.state;
-    if (shouldRedirect) {
-      // Redirect
-    }
+  handleSubmit = (updatedMovie) => {
+    updateMovie(updatedMovie).then(this.setState({ getInfo: 2 }));
+  }
 
-    if (status === 'loading') {
-      // render Loading
-    }
+  callLoading = () => <Loading />
 
+  showMovieForms = () => {
+    const { movie } = this.state;
     return (
       <div data-testid="edit-movie">
         <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );
+  }
+
+  goMovieList = () => <Redirect to="/" />
+
+  render() {
+    const { getInfo } = this.state;
+    const { callLoading, showMovieForms, goMovieList } = this;
+    const doObject = {
+      0: callLoading(),
+      1: showMovieForms(),
+      2: goMovieList(),
+    };
+    return doObject[getInfo];
   }
 }
 
