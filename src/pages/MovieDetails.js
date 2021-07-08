@@ -63,8 +63,8 @@ class MovieDetails extends Component {
     return (
       <div>
         { load ? loadingComponent : movieComponent }
-        <Link to="/">VOLTAR</Link>
-        <Link to={ editPath }>EDITAR</Link>
+        <Link to="/">VOLTAR </Link>
+        <Link to={ editPath }>EDITAR </Link>
         <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
