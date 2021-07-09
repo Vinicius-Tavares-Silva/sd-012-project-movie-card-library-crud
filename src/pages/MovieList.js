@@ -13,7 +13,7 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    const movieList = this.fetchMovieList();
+    this.fetchMovieList();
   }
 
   async fetchMovieList() {
