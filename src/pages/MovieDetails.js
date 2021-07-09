@@ -11,6 +11,8 @@ class MovieDetails extends Component {
     super();
 
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.delMovie = this.delMovie.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
       movie: {},
       loading: true,
@@ -20,6 +22,15 @@ class MovieDetails extends Component {
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     this.fetchMovie(id);
+  }
+
+  handleClick() {
+    this.delMovie();
+  }
+
+  async delMovie() {
+    const { match: { params: { id } } } = this.props;
+    await movieAPI.deleteMovie(id);
   }
 
   async fetchMovie(id) {
@@ -51,6 +62,9 @@ class MovieDetails extends Component {
         </button>
         <button type="button">
           <Link to="/">VOLTAR</Link>
+        </button>
+        <button type="button" onClick={ this.handleClick }>
+          <Link to="/">DELETAR</Link>
         </button>
       </div>
     );
