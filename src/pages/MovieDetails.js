@@ -55,7 +55,10 @@ class MovieDetails extends Component {
     return (
       <div data-testid="movie-details" className="movie-details">
         <div>
-          <img alt="Movie Cover" src={ `../${imagePath}` } />
+          <img
+            alt="Movie Cover"
+            src={ /^http/.test(imagePath) ? imagePath : `../${imagePath}` }
+          />
           <p>
             <strong>{ 'Título: '}</strong>
             {title}
