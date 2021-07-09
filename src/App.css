@@ -34,6 +34,10 @@ body::-webkit-scrollbar-thumb {
   justify-content: space-between;
 }
 
+.fix-app {
+  flex-grow: 1;
+}
+
 select {
   cursor: pointer;
 }

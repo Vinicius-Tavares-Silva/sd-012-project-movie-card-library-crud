@@ -14,20 +14,22 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Header />
-          <Switch>
-            <Route path="/movies/new" render={ (props) => <NewMovie { ...props } /> } />
-            <Route
-              path="/movies/:id/edit"
-              render={ (props) => <EditMovie { ...props } /> }
-            />
-            <Route
-              path="/movies/:id"
-              render={ (props) => <MovieDetails { ...props } /> }
-            />
-            <Route path="/:notfound" render={ (props) => <NotFound { ...props } /> } />
-            <Route path="/" render={ (props) => <MovieList { ...props } /> } />
-          </Switch>
+          <div className="fix-app">
+            <Header />
+            <Switch>
+              <Route path="/movies/new" render={ (props) => <NewMovie { ...props } /> } />
+              <Route
+                path="/movies/:id/edit"
+                render={ (props) => <EditMovie { ...props } /> }
+              />
+              <Route
+                path="/movies/:id"
+                render={ (props) => <MovieDetails { ...props } /> }
+              />
+              <Route path="/:notfound" render={ (props) => <NotFound { ...props } /> } />
+              <Route path="/" render={ (props) => <MovieList { ...props } /> } />
+            </Switch>
+          </div>
           <Footer />
         </div>
       </BrowserRouter>
