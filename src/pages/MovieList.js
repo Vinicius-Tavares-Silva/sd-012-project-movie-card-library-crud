@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
-import { Link } from 'react-router-dom';
 import Loading from '../components/Loading'
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
   constructor() {
     super();
-
+    this.fetchMovies = this.fetchMovies.bind(this);
     this.state = {
       movies: [],
     };
-    this.fetchMovies = this.fetchMovies.bind(this);
+    
   }
 
   componentDidMount() {
+    console.log('montou');
     this.fetchMovies();
   }
 
   async fetchMovies() {
     const movies = await movieAPI.getMovies();
-    this.setState((state) => ({ ...state, mov: [...movies] }));
+    this.setState((state) => ({ ...state, movies: [...movies] }));
   }
 
   render() {
@@ -28,8 +28,7 @@ class MovieList extends Component {
     if (!movies.length) return (<Loading />);
     return (
       <div data-testid="movie-list">
-        {/* {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-        <Link to={`movies/${movies.id}`}>{movies.name}</Link> */}
+        { movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
       </div>
     );
   }
