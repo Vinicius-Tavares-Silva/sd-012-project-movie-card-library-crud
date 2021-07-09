@@ -65,4 +65,5 @@ MovieDetails.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired }).isRequired,
 };
+
 export default MovieDetails;
