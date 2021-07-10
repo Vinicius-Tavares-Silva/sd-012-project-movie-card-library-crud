@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -42,7 +42,7 @@ class MovieDetails extends Component {
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
         <Link to='/'>VOLTAR</Link>
-        <Link to={`/movies/${this.props.match.id}/edit`}>EDITAR</Link>
+        <Link to={`/movies/${this.props.match.params.id}/edit`}>EDITAR</Link>
       </div>
     )
   }
