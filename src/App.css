@@ -18,6 +18,9 @@ body {
   justify-content: center;
 }
 
+Link {
+  padding: 2px;
+}
 .page-title {
   color: #f8f9fa;
   font-size: 28px;
