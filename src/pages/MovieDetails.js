@@ -11,6 +11,7 @@ class MovieDetails extends Component {
       movie: '',
       loading: true,
     }
+    this.removeMovie = this.removeMovie.bind(this);
   }
 
   async fetchMovie() {
@@ -31,6 +32,12 @@ class MovieDetails extends Component {
     this.fetchMovie()
   }
 
+  async removeMovie() {
+    const { id } = this.props.match.params;
+    const { deleteMovie } = movieAPI;
+    await deleteMovie(id)
+  }
+
   renderMovie() {
     const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
     return (
@@ -43,6 +50,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to='/'>VOLTAR</Link>
         <Link to={`/movies/${this.props.match.params.id}/edit`}>EDITAR</Link>
+        <Link to="/" onClick={this.removeMovie}>DELETAR</Link>
       </div>
     )
   }
