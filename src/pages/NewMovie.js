@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import MovieForm from '../components/MovieForm';
-// import * as movieAPI from '../services/movieAPI';
+import * as movieAPI from '../services/movieAPI';
 
 class NewMovie extends Component {
   constructor(props) {
@@ -9,8 +9,13 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  /* handleSubmit(newMovie) {
-  } */
+  handleSubmit(newMovie) {
+    return console.log(newMovie);
+  }
+
+  lidacomerro() { // isso esta aqui só pra que movieAPI seja usado em algo
+    return console.log(movieAPI);
+  }
 
   render() {
     return (
