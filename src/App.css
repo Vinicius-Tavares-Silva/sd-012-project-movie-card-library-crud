@@ -3,6 +3,12 @@ body {
   box-sizing: border-box;
 }
 
+.loading {
+  font-size: 20px;
+  margin-top: 50vh;
+  text-align: center;
+}
+
 .movie-list {
   display: flex;
   justify-content: space-around;

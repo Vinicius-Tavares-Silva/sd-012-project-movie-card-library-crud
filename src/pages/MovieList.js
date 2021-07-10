@@ -24,10 +24,11 @@ class MovieList extends Component {
   render() {
     const { movies, loading } = this.state;
 
+    if (loading) return <Loading />;
+
     // Render Loading here if the request is still happening
     return (
       <section className="movie-list" data-testid="movie-list">
-        { loading ? <Loading /> : null }
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </section>
     );
