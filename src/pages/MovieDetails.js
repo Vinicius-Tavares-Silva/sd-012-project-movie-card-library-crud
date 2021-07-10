@@ -13,6 +13,7 @@ class MovieDetails extends Component {
       loading: true,
     };
     this.handleFetch = this.handleFetch.bind(this);
+    this.handleDeletation = this.handleDeletation.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,11 @@ class MovieDetails extends Component {
       movies: response,
       loading: false,
     });
+  }
+
+  handleDeletation() {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -43,8 +49,9 @@ class MovieDetails extends Component {
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movies/${id}/edit` }>EDITAR </Link>
-        <Link to="/"> VOLTAR</Link>
+        <Link className="button" to={ `/movies/${id}/edit` }>EDITAR </Link>
+        <Link className="button" to="/" onClick={ this.handleDeletation }>DELETAR</Link>
+        <Link className="button" to="/"> VOLTAR</Link>
       </div>
     );
   }
