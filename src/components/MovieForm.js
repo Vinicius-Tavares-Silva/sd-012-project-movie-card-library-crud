@@ -5,10 +5,9 @@ class MovieForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...props.movie };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {
+  handleSubmit = () => {
     const { onSubmit } = this.props;
     onSubmit(this.state);
   }
@@ -163,5 +162,10 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  movie: PropTypes.objectOf(Object).isRequired,
+  onSubmit: PropTypes.objectOf(Object).isRequired,
+};
 
 export default MovieForm;
