@@ -4,7 +4,7 @@ import React from 'react';
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ...props.movie };
+    //  this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
