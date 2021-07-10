@@ -16,7 +16,7 @@ export default class MovieDetails extends Component {
     this.requestMovie = this.requestMovie.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.requestMovie();
   }
 
