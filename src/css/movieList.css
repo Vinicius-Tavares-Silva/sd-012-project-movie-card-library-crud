@@ -6,7 +6,7 @@
   width: 95%;
 }
 
-.movie-link {
+.add-movie {
   background-color: black;
   border-radius: 5px;
   color: #f48024;
@@ -20,6 +20,40 @@
   top: 50px;
 }
 
-.movie-link:hover {
+.add-movie:hover {
   opacity: 1;
 }
+
+
+@media screen and ( max-width : 598px ) {
+
+  .add-movie {
+    font-size: 12px;
+    height: 15px;
+    top: 65px;
+  }
+}
+
+@media screen and ( max-width : 500px ) {
+
+  .add-movie {
+    display: flex;
+    flex-direction: column;
+    height: 12px;
+    justify-content: center;
+    top: 115px;
+  }
+}
+
+@media screen and ( max-width : 400px ) {
+
+  .add-movie {
+    display: flex;
+    flex-direction: column;
+    height: 12px;
+    justify-content: center;
+    margin: 0;
+    top: 338px;
+  }
+}
+

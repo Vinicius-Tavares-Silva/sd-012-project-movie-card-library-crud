@@ -5,7 +5,7 @@
   color: #c2c2c2;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   margin-bottom: 20px;
   max-width: 100%;
   padding: 20px;
@@ -30,6 +30,7 @@
 .form-searchBar label:nth-child( 1 ) {
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-bottom: 15px;
   width: 100%;
@@ -42,13 +43,10 @@
 .form-searchBar label:nth-child( 2 ) {
   align-items: center;
   display: flex;
+  flex-direction: column;
   height: 25px;
-  justify-content: flex-start;
-  width: 17%;
-}
-
-.form-searchBar label:nth-child( 2 ) input {
-  margin-left: 5px;
+  justify-content: center;
+  width: 45%;
 }
 
 .form-searchBar label:nth-child( 2 ) input:focus {
@@ -59,9 +57,10 @@
 .form-searchBar label:nth-child( 3 ) {
   align-items: center;
   display: flex;
+  flex-direction: column;
   height: 25px;
-  justify-content: flex-start;
-  width: 18%;
+  justify-content: center;
+  width: 45%;
 }
 
 .form-searchBar label:nth-child( 3 ) select {
@@ -79,31 +78,34 @@
 
 @media screen and ( max-width : 598px ) {
 
-  .form-searchBar label:nth-child( 1 ) {
-    flex-direction: column;
-  }
-
   .form-searchBar label:nth-child( 1 ) input {
     width: 80%;
   }
 
+  .form-searchBar label:nth-child( 1 ) {
+    width: 100%;
+  }
+
   .form-searchBar label:nth-child( 2 ) {
-    justify-content: space-around;
-    text-align: center;
-    width: 37.5%;
+    width: 100%;
   }
 
   .form-searchBar label:nth-child( 3 ) {
-    justify-content: space-between;
-    text-align: center;
-    width: 40%;
+    width: 100%;
   }
 }
 
 @media screen and ( max-width : 500px ) {
 
   .form-searchBar {
+    box-sizing: content-box;
+    flex-direction: column;
     font-size: 15px;
+    justify-content: space-between;
+  }
+
+  .form-searchBar label:nth-child( 1 ) {
+    margin: 15px;
   }
 
   .form-searchBar label:nth-child( 1 ) input {
@@ -111,30 +113,19 @@
   }
 
   .form-searchBar label:nth-child( 2 ) {
-    flex-direction: column;
-    justify-content: center;
-    width: 49%;
+    margin: 15px;
   }
 
   .form-searchBar label:nth-child( 3 ) {
-    flex-direction: column;
-    width: 49%;
+    height: 50px;
+    justify-content: space-between;
   }
+
 }
 
 @media screen and ( max-width : 400px ) {
 
-  .form-searchBar label:nth-child( 1 ) {
-    flex-direction: column;
-  }
-
-  .form-searchBar label:nth-child( 2 ) {
-    justify-content: space-around;
-    width: 37.5%;
-  }
-
   .form-searchBar label:nth-child( 3 ) {
     justify-content: space-between;
-    width: 40%;
   }
 }

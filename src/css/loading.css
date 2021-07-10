@@ -3,9 +3,11 @@
   background-color: #222426;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
   justify-content: center;
+  position: fixed;
   transform: scale(1);
+  width: 100vw;
 }
 
 .loading-text {

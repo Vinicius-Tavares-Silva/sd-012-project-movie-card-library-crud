@@ -83,7 +83,7 @@ class MovieList extends Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <div data-testid="movie-list" className="movie-list">
-          <Link to="/movies/new" className="movie-link">ADICIONAR CARTÃO</Link>
+          <Link to="/movies/new" className="add-movie">ADICIONAR CARTÃO</Link>
           {this.filterMovies(movies).map((movie) => (<MovieCard
             key={ movie.title }
             movie={ movie }
