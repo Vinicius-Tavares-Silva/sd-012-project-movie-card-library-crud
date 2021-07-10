@@ -7,7 +7,6 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       movie: '',
       loading: true,
