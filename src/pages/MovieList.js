@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Loading, MovieCard } from '../components';
-
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
@@ -34,7 +33,8 @@ class MovieList extends Component {
     const { movies } = this.state;
     return (
       <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        {movies
+          .map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
   }
