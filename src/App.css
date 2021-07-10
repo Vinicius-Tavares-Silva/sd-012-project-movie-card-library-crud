@@ -1,7 +1,7 @@
 body {
   background-color: whitesmoke;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 16px;  
 }
 
 .loading {
@@ -18,8 +18,17 @@ body {
   justify-content: center;
 }
 
-Link {
-  padding: 2px;
+.addMovie {
+  background-color: rgb(21, 41, 219);
+  color: white;
+  display: block;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 25px auto 5px;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  width: 15%;  
 }
 .page-title {
   color: #f8f9fa;

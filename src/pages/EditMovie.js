@@ -32,7 +32,7 @@ class EditMovie extends Component {
   handleSubmit(updatedMovie) {
     const updateResponse = movieAPI.updateMovie(updatedMovie);
     this.setState({
-      movie: updateResponse.then,
+      movie: updateResponse,
       shouldRedirect: true,
     });
   }
