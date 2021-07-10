@@ -40,15 +40,19 @@ class MovieDetails extends Component {
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
 
     return (
-      <section data-testid="movie-details">
+      <section className="details-container" data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <h2>{ title }</h2>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        <Link to={ `/movies/${movieID}/edit` }>EDITAR</Link>
-        <Link to="/">VOLTAR</Link>
+        <section className="movie-details-section">
+          <h2>{ title }</h2>
+          <p>{ `Subtitle: ${subtitle}` }</p>
+          <p>{ `Storyline: ${storyline}` }</p>
+          <p>{ `Genre: ${genre}` }</p>
+          <p>{ `Rating: ${rating}` }</p>
+          <section className="link-section">
+            <Link className="link" to={ `/movies/${movieID}/edit` }>EDITAR</Link>
+            <Link className="link" to="/">VOLTAR</Link>
+          </section>
+        </section>
       </section>
     );
   }
