@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
 import { Link } from 'react-router-dom';
+import MovieCard from '../components/MovieCard';
 import * as movieAPI from '../services/movieAPI';
-import movies from '../services/movieData';
+import moviies from '../services/movieData';
 
 class MovieList extends Component {
   constructor() {
@@ -14,40 +14,41 @@ class MovieList extends Component {
     };
   }
 
+  componentDidMount() {
+    this.fetchApi();
+  }
+
   async fetchApi() {
     const { getMovies } = movieAPI;
     this.setState({
       loading: true,
     }, async () => {
-      const fetchMovies = await getMovies().then((resolve) => resolve)
+      const fetchMovies = await getMovies().then((resolve) => resolve);
       this.setState({
-        movies: [...movies,fetchMovies],
+        movies: [...moviies, fetchMovies],
         loading: false,
-      })
-    })
-  }
-  componentDidMount() {
-    this.fetchApi()
+      });
+    });
   }
 
   renderMovieList() {
     const { movies } = this.state;
     return (
       <div data-testid="movie-list">
-        {movies[movies.length - 1].map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-        <Link  exact to="/movies/new">ADICIONAR CARTÃO</Link>
+        {movies[movies.length - 1].map(
+          (movie) => <MovieCard key={ movie.title } movie={ movie } />,
+        )}
+        <Link exact to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
-    )
+    );
   }
 
   render() {
     const { loading } = this.state;
     // Render Loading here if the request is still happening
-    const loadingElement = <p>Carregando...</p>
+    const loadingElement = <p>Carregando...</p>;
     return (
-      <React.Fragment>
-        { loading ? loadingElement : this.renderMovieList( ) }
-      </React.Fragment>
+      loading ? loadingElement : this.renderMovieList()
     );
   }
 }
