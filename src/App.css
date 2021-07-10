@@ -3,3 +3,41 @@ body {
   box-sizing: border-box;
 }
 
+.header-content {
+  background-color: grey;
+  display: flex;
+  font-size: 2.5em;
+  justify-content: center;
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
+a {
+  align-items: center;
+  background-color: rgb(56, 138, 231);
+  border: 2px solid rgb(56, 138, 231);
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding: 4px;
+  text-decoration: none;
+  width: 15%;
+}
+
+.delete {
+  background-color: rgb(231, 56, 56);
+  border: 2px solid rgb(231, 56, 56);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -136,7 +136,7 @@ class MovieForm extends React.Component {
 
   renderSubmitButton() {
     return (
-      <div>
+      <div className="submit">
         <button
           type="button"
           onClick={ this.handleSubmit }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages';
+import './App.css';
 
 export default class App extends Component {
   render() {
