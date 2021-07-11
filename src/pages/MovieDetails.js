@@ -14,7 +14,7 @@ class MovieDetails extends Component {
     };
   }
 
-  // Para conseguir resolver o problema de desativar funções assincronas no componentDidMount utilizando o componentWillUnmount eu utilizei esse site com referencia:
+  // Para conseguir resolver o problema de desativar funções assincronas no componentDidMount utilizando o componentWillUnmount eu utilizei esse site como referencia:
   // https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
 
   componentDidMount() {
