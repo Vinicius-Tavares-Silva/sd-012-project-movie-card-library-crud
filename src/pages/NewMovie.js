@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-
+import { Redirect, Link } from 'react-router-dom';
 import MovieForm from '../components/MovieForm';
-// import * as movieAPI from '../services/movieAPI';
+import * as movieAPI from '../services/movieAPI';
 
 class NewMovie extends Component {
   constructor(props) {
@@ -11,12 +11,20 @@ class NewMovie extends Component {
 
   handleSubmit(newMovie) {
     movieAPI.createMovie(newMovie);
+    this.setState({
+      shouldRedirect: true,
+    });
   }
 
   render() {
+    const { shouldRedirect } = this.state;
+    if (shouldRedirect) {
+      return <Redirect to="/" />;
+    }
     return (
       <div data-testid="new-movie">
         <MovieForm onSubmit={ this.handleSubmit } />
+        <Link to="/">VOLTAR</Link>
       </div>
     );
   }
