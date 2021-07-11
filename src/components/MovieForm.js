@@ -9,7 +9,7 @@ class MovieForm extends React.Component {
   }
 
   handleSubmit() {
-    // const { onSubmit } = this.props;
+    const { onSubmit } = this.props;
     onSubmit(this.state);
   }
 
@@ -166,6 +166,7 @@ class MovieForm extends React.Component {
 
 MovieForm.propTypes = {
   movie: PropTypes.shape().isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default MovieForm;
