@@ -12,7 +12,23 @@ body {
 .movie-list {
   display: flex;
   justify-content: space-around;
-  margin-top: 25px;
+  margin: 50px 35px;
+}
+
+.movie-card {
+  background-color: rgba(187, 187, 187, 0.5);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 10px;
+  padding: 10px;
+  width: 350px;
+}
+
+.movie-card img {
+  border-radius: 10px;
+  width: 100%;
 }
 
 .details-container {
