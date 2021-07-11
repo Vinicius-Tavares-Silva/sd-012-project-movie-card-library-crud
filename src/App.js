@@ -6,10 +6,10 @@ function App() {
   return (
 
     <div>
+      <div>
+        <h1>Movie Card Library CRUD</h1>
+      </div>
       <BrowserRouter>
-        <div>
-          <h1>Movie Card Library CRUD</h1>
-        </div>
         <Switch>
           <Route exact path="/" component={ MovieList } />
           <Route
@@ -26,7 +26,7 @@ function App() {
             path="/movies/:id/edit"
             render={ (props) => <EditMovie { ...props } /> }
           />
-          <Route path="" component={ NotFound } />
+          <Route path="*" component={ NotFound } />
 
         </Switch>
         <Link to="/movies/new">ADICIONAR CARTÃO</Link>

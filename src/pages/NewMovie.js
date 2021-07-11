@@ -6,6 +6,10 @@ import * as movieAPI from '../services/movieAPI';
 class NewMovie extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      movie: [],
+      shouldRedirect: false,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -17,13 +21,14 @@ class NewMovie extends Component {
   }
 
   render() {
+    const { movie } = this.state;
     const { shouldRedirect } = this.state;
     if (shouldRedirect) {
       return <Redirect to="/" />;
     }
     return (
       <div data-testid="new-movie">
-        <MovieForm onSubmit={ this.handleSubmit } />
+        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
         <Link to="/">VOLTAR</Link>
       </div>
     );
