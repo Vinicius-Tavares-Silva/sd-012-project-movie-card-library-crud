@@ -54,3 +54,63 @@ body {
 .link:hover {
   background-color: rgb(165, 88, 0);
 }
+
+.movie-form {
+  align-items: center;
+  background-color: rgb(163, 163, 163);
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px rgb(109, 108, 108);
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  width: 50%;
+}
+
+.movie-form div {
+  margin: 10px;
+}
+
+.movie-form div label {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.movie-form div label input {
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 10px;
+  width: 100%;
+}
+
+.text-area-form {
+  height: 120px;
+  resize: none;
+  width: 350px;
+}
+
+.select-form {
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 10px;
+  width: 200px;
+}
+
+.button-form {
+  background-color: rgb(255, 136, 0);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 30px;
+  height: 50px;
+  margin-top: 30px;
+  transition: 1s;
+  width: 150px;
+}
+
+.button-form:hover {
+  background-color: rgb(165, 88, 0);
+}
