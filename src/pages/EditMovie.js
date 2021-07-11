@@ -5,8 +5,6 @@ import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
-  _isMounted = false;
-
   constructor(props) {
     super(props);
     this.state = {
@@ -19,38 +17,29 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    this._isMounted = true;
     this.moviesFetchApi();
   }
 
   componentWillUnmount() {
-    this._isMounted = false;
+    this.setState = () => {};
   }
 
   async handleSubmit(updatedMovie) {
     movieAPI.updateMovie(updatedMovie)
-      .then(() => {
-        if (this._isMounted) {
-          this.setState({
-            loading: false,
-            shouldRedirect: true,
-          });
-        }
-      });
+      .then(() => this.setState({
+        loading: false,
+        shouldRedirect: true,
+      }));
   }
 
   async moviesFetchApi() {
     const { match } = this.props;
     const { id } = match.params;
     movieAPI.getMovie(id)
-      .then((response) => {
-        if (this._isMounted) {
-          this.setState({
-            movie: response,
-            loading: false,
-          });
-        }
-      });
+      .then((response) => this.setState({
+        movie: response,
+        loading: false,
+      }));
   }
 
   render() {
