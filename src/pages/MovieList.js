@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
+import MovieListContainer from '../components/MovieListContainer';
 
 import * as movieAPI from '../services/movieAPI';
 
@@ -20,25 +20,15 @@ class MovieList extends Component {
   }
 
   loadMovies(moviesArray) {
-    this.setState({ loading: true }, () => {
-      this.setState(({ movies }) => ({
-        movies: [...moviesArray, ...movies],
-        loading: false,
-      }));
-    });
-  }
-
-  movieList(movies) {
-    return (
-      <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.id } movie={ movie } />)}
-      </div>
-    );
+    this.setState(({ movies }) => ({
+      movies: [...moviesArray, ...movies],
+      loading: false,
+    }));
   }
 
   render() {
     const { movies, loading } = this.state;
-    return (loading) ? <Loading /> : this.movieList(movies);
+    return (loading) ? <Loading /> : <MovieListContainer movies={ movies } />;
   }
 }
 
