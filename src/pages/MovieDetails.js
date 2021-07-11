@@ -14,6 +14,7 @@ class MovieDetails extends Component {
     };
 
     this.getingDetailsFetch = this.getingDetailsFetch.bind(this);
+    this.removeMovie = this.removeMovie.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +33,11 @@ class MovieDetails extends Component {
         });
       },
     );
+  }
+
+  async removeMovie() {
+    const { movie: { id } } = this.state;
+    await movieAPI.deleteMovie(id);
   }
 
   render() {
