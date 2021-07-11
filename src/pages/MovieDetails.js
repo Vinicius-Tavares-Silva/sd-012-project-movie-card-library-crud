@@ -9,9 +9,11 @@ class MovieDetails extends Component {
     super();
 
     this.state = {
-      movie: [],
       loading: true,
+      movie: {},
     };
+
+    this.getingDetailsFetch = this.getingDetailsFetch.bind(this);
   }
 
   componentDidMount() {
@@ -20,42 +22,46 @@ class MovieDetails extends Component {
 
   async getingDetailsFetch() {
     const { match: { params: { id } } } = this.props;
-    const { getMovie } = movieAPI;
-    const detailsFetch = await getMovie(id);
-    this.setState({
-      loading: false,
-      movie: detailsFetch,
-    });
-  }
-
-  fetchDetails = () => {
-    const { movie } = this.state;
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
-
-    return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <p>{ `Title: ${title}` }</p>
-        <p>{ `Subtitle: ${subtitle}` }</p>
-        <p>{ `Storyline: ${storyline}` }</p>
-        <p>{ `Genre: ${genre}` }</p>
-        <p>{ `Rating: ${rating}` }</p>
-        <div>
-          <p><Link to={ `/movies/${id}/edit` }>EDITAR</Link></p>
-          <p><Link exact to="/">VOLTAR</Link></p>
-        </div>
-      </div>
-
+    this.setState(
+      { loading: true },
+      async () => {
+        const detailsFetch = await movieAPI.getMovie(id);
+        this.setState({
+          loading: false,
+          movie: detailsFetch,
+        });
+      },
     );
   }
 
   render() {
-    const { loading } = this.state;
+    const { movie, loading } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
+
     return (
       <div>
-        { loading ? <Loading /> : this.fetchDetails() }
+        { loading ? (
+          <Loading />
+        ) : (
+          <div data-testid="movie-details">
+            <img alt="Movie Cover" src={ `../${imagePath}` } />
+            <div>
+              <h4>{ `Title: ${title}` }</h4>
+              <h5>{ `Subtitle: ${subtitle}` }</h5>
+              <p>{ `Storyline: ${storyline}` }</p>
+              <p>{ `Genre: ${genre}` }</p>
+            </div>
+            <div>
+              <p>{ `Rating: ${rating}` }</p>
+            </div>
+            <div>
+              <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+              <Link to="/" onClick={ this.removeMovie }>DELETAR</Link>
+              <Link to="/">VOLTAR</Link>
+            </div>
+          </div>
+        )}
       </div>
-
     );
   }
 }

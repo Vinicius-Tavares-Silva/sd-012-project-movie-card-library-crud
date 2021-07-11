@@ -10,7 +10,7 @@ class EditMovie extends Component {
     super(props);
 
     this.state = {
-      movie: [],
+      movie: {},
       shouldRedirect: false,
       status: 'loading',
     };
@@ -24,7 +24,7 @@ class EditMovie extends Component {
     const { updateMovie } = movieAPI;
     updateMovie(updatedMovie);
     this.setState({
-      movie: updatedMovie,
+      movie: updateMovie,
       shouldRedirect: true,
     });
   }
@@ -34,8 +34,8 @@ class EditMovie extends Component {
     const { getMovie } = movieAPI;
     const fetchEdit = await getMovie(id);
     this.setState({
-      status: 'loaded',
       movie: fetchEdit,
+      status: 'loaded',
     });
   }
 
