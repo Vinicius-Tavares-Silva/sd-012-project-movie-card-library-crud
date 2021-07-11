@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div>
-        <div>Movie Card Library CRUD</div>
+        <div className="movie-list-header">Projeto Movie Card Library CRUD</div>
         <Switch>
           <Route path="/movies/new" component={ NewMovie } />
           <Route path="/movies/:id/edit" component={ EditMovie } />
