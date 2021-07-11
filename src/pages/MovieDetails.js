@@ -58,4 +58,6 @@ MovieDetails.propTypes = {
   }).isRequired,
 };
 
+// Requisito 3 cumprido com o auxílio do colega Rodrigo Facury;
+
 export default MovieDetails;
