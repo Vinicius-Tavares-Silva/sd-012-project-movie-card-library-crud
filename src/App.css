@@ -1,4 +1,16 @@
+header {
+  background-color: rgb(179, 179, 179);
+  color: rgb(127, 17, 218);
+  font-family: Viga , sans-serif;
+  font-size: 35px;
+  height: 100px;
+  padding-top: 20px; 
+  text-align: center;
+  width: 100%;
+}
+
 body {
+  font-family: Roboto , sans-serif;
   background-color: whitesmoke;
   box-sizing: border-box;
 }
