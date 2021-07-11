@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MovieCard from '../components/MovieCard';
 import { Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
-class MovieList extends Component {
+class MovieList extends React.Component {
   constructor() {
     super();
 
@@ -21,8 +21,8 @@ class MovieList extends Component {
 
     return (
       <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-        { !movies.length ? <Loading /> : console.log('')}
+        { movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
+        { !movies.length ? <Loading /> : console.log('') }
       </div>
     );
   }

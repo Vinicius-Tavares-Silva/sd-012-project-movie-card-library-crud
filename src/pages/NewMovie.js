@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import MovieForm from '../components/MovieForm';
 // import * as movieAPI from '../services/movieAPI';
 
-class NewMovie extends Component {
+class NewMovie extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
