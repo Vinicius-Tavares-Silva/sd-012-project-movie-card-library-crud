@@ -8,7 +8,6 @@ class MovieList extends Component {
     super();
 
     this.fetchMoviesAPI = this.fetchMoviesAPI.bind(this);
-    this.movieCardList = this.movieCardList.bind(this);
 
     this.state = {
       loading: true,
@@ -33,19 +32,15 @@ class MovieList extends Component {
     );
   }
 
-  movieCardList() {
-    const { movies } = this.state;
+  render() {
+    const { loading, movies } = this.state;
+
+    if (loading) return <Loading />;
+
     return (
       <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
-    );
-  }
-
-  render() {
-    const { loading } = this.state;
-    return (
-      <div>{ loading ? <Loading /> : this.movieCardList() }</div>
     );
   }
 }
