@@ -52,6 +52,7 @@ class MovieForm extends React.Component {
           />
           Subtítulo
         </label>
+
       </div>
     );
   }
