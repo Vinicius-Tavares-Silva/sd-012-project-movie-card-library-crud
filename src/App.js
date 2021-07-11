@@ -16,7 +16,11 @@ function App() {
             path="/movies/:id"
             render={ (props) => <MovieDetails { ...props } /> }
           />
-          <Route path="/movies/new" component={ NewMovie } />
+          <Route
+            path="/movies/new"
+            render={ (props) => <NewMovie { ... props } /> }
+            component={ NewMovie }
+          />
           <Route
             exact
             path="/movies/:id/edit"
