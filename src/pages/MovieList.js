@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
+import Loading from '../components/Loading';
 
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movies: [],
@@ -13,13 +14,13 @@ class MovieList extends Component {
     };
   }
 
-  componentDidMount() {
-    this.fetchMovies();
+  async componentDidMount() {
+    const moviesArray = await movieAPI.getMovies();
+    this.loadMovies(moviesArray);
   }
 
-  fetchMovies() {
-    this.setState({ loading: true }, async () => {
-      const moviesArray = await movieAPI.getMovies();
+  loadMovies(moviesArray) {
+    this.setState({ loading: true }, () => {
       this.setState(({ movies }) => ({
         movies: [...moviesArray, ...movies],
         loading: false,
@@ -35,13 +36,9 @@ class MovieList extends Component {
     );
   }
 
-  loadingElement() {
-    return <span>Carregando...</span>;
-  }
-
   render() {
     const { movies, loading } = this.state;
-    return (loading) ? this.loadingElement() : this.movieList(movies);
+    return (loading) ? <Loading /> : this.movieList(movies);
   }
 }
 
