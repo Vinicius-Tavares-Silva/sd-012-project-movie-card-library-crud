@@ -3,6 +3,11 @@ body {
   box-sizing: border-box;
 }
 
+.home-section {
+  display: flex;
+  flex-direction: column;
+}
+
 .loading {
   font-size: 20px;
   margin-top: 50vh;
@@ -62,7 +67,9 @@ body {
   background-color: rgb(255, 136, 0);
   border-radius: 10px;
   color: white;
+  margin: 0 auto;
   padding: 10px;
+  text-align: center;
   text-decoration: none;
   transition: 1s;
 }

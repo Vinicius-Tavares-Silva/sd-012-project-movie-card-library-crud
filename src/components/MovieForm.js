@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Eu estava recebendo o warning 'A component is changing an uncontrolled input of type text to be controlled', então para resolver esse problema usei esse site como
+// referencia: https://stackoverflow.com/questions/47012169/a-component-is-changing-an-uncontrolled-input-of-type-text-to-be-controlled-erro
+
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +32,7 @@ class MovieForm extends React.Component {
             id="movie_title"
             type="text"
             className="validate"
-            value={ title }
+            value={ title || '' }
             onChange={ (event) => this.updateMovie('title', event.target.value) }
           />
         </label>
@@ -48,7 +51,7 @@ class MovieForm extends React.Component {
             placeholder="Insira o subtítulo"
             id="movie_subtitle"
             type="text"
-            value={ subtitle }
+            value={ subtitle || '' }
             onChange={ (event) => this.updateMovie('subtitle', event.target.value) }
           />
         </label>
@@ -67,7 +70,7 @@ class MovieForm extends React.Component {
             placeholder="Insira o caminho da imagem"
             id="movie_image"
             type="text"
-            value={ imagePath }
+            value={ imagePath || '' }
             onChange={ (event) => this.updateMovie('imagePath', event.target.value) }
           />
         </label>
@@ -85,7 +88,7 @@ class MovieForm extends React.Component {
           <textarea
             className="text-area-form"
             id="movie_storyline"
-            value={ storyline }
+            value={ storyline || '' }
             onChange={ (event) => this.updateMovie('storyline', event.target.value) }
           />
         </label>
@@ -102,7 +105,7 @@ class MovieForm extends React.Component {
           <select
             className="select-form"
             id="movie_genre"
-            value={ genre }
+            value={ genre || 'action' }
             onChange={ (event) => this.updateMovie('genre', event.target.value) }
           >
             <option value="action">Ação</option>
@@ -128,7 +131,7 @@ class MovieForm extends React.Component {
             step={ 0.1 }
             min={ 0 }
             max={ 5 }
-            value={ rating }
+            value={ rating || 0 }
             onChange={ (event) => this.updateMovie('rating', event.target.value) }
           />
         </label>
@@ -167,6 +170,18 @@ class MovieForm extends React.Component {
   }
 }
 
+MovieForm.defaultProps = {
+  movie: {
+    id: 1,
+    title: '',
+    storyline: '',
+    rating: 0,
+    imagePath: '',
+    bookmarked: false,
+    genre: '',
+  },
+};
+
 MovieForm.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -176,7 +191,7 @@ MovieForm.propTypes = {
     imagePath: PropTypes.string.isRequired,
     bookmarked: PropTypes.bool.isRequired,
     genre: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   onSubmit: PropTypes.func.isRequired,
 };
 
