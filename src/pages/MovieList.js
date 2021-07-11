@@ -1,38 +1,45 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
-import Loading from '../components/Loading';
-import { getMovies } from '../services/movieAPI';
+import { Loading } from '../components';
+import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movies: [],
-      getInfo: 0,
+      isLoading: true,
     };
+
+    this.fetchMovies = this.fetchMovies.bind(this);
   }
 
   componentDidMount() {
-    getMovies().then((movieArr) => this.setState({ movies: [...movieArr], getInfo: 1 }));
+    this.fetchMovies();
   }
 
-  makeMovieCards = () => {
-    const { movies } = this.state;
-    return (
-      <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
-      </div>
-    );
+  fetchMovies() {
+    movieAPI.getMovies()
+      .then((movies) => {
+        this.setState({
+          movies,
+          isLoading: false,
+        });
+      })
+      .catch(console.log);
   }
-
-  callLoading = () => <Loading />
 
   render() {
-    const { getInfo } = this.state;
-    const { makeMovieCards, callLoading } = this;
+    const { movies, isLoading } = this.state;
 
-    return (getInfo === 0) ? callLoading() : makeMovieCards();
+    if (isLoading) return <Loading />;
+
+    return (
+      <div data-testid="movie-list">
+        {movies.map((movie) => <MovieCard key={ movie.id } movie={ movie } />)}
+      </div>
+    );
   }
 }
 
