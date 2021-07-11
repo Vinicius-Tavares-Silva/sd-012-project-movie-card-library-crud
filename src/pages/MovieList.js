@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import { Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
+  _isMounted = false;
+
   constructor() {
     super();
     this.moviesFetchApi = this.moviesFetchApi.bind(this);
@@ -14,15 +17,24 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     this.moviesFetchApi();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   async moviesFetchApi() {
     movieAPI.getMovies()
-      .then((response) => this.setState({
-        movies: response,
-        loading: false,
-      }));
+      .then((response) => {
+        if (this._isMounted) {
+          this.setState({
+            movies: response,
+            loading: false,
+          });
+        }
+      });
   }
 
   render() {
