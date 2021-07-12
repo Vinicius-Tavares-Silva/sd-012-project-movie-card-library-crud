@@ -9,18 +9,28 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
 
+    this.mounted = false; // https://stackoverflow.com/questions/49906437/how-to-cancel-a-fetch-on-componentwillunmount
+
     this.state = {
       movie: {},
       loading: true,
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const { match } = this.props;
     const { params } = match;
     const { id } = params;
-    const movie = await movieAPI.getMovie(id);
-    this.loadMovie(movie);
+    this.mounted = true;
+    movieAPI.getMovie(id).then((response) => { // https://stackoverflow.com/questions/49906437/how-to-cancel-a-fetch-on-componentwillunmount
+      if (this.mounted) {
+        this.loadMovie(response);
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.mounted = false; // https://stackoverflow.com/questions/49906437/how-to-cancel-a-fetch-on-componentwillunmount
   }
 
   loadMovie(movie) {
