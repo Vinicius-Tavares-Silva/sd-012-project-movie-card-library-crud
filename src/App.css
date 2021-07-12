@@ -1,18 +1,40 @@
+body {
+  background-color: whitesmoke;
+  box-sizing: border-box;
+  font-family: Roboto , sans-serif;
+  margin: 5px;
+}
+
 header {
-  background-color: rgb(179, 179, 179);
-  color: rgb(127, 17, 218);
-  font-family: Viga , sans-serif;
-  font-size: 35px;
+  background-color: royalblue;
   height: 100px;
-  padding-top: 20px; 
-  text-align: center;
   width: 100%;
 }
 
-body {
-  font-family: Roboto , sans-serif;
-  background-color: whitesmoke;
-  box-sizing: border-box;
+h1 {
+  color: whitesmoke;
+  font-family: Viga , sans-serif;
+  font-size: 35px;
+  text-align: center;
+}
+
+a {
+  color: rgb(0, 39, 156);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+button {
+  background-color: rgb(228, 225, 225);
+  border-radius: 10px;
+  height: 30px;
+  margin: 5px;
+  width: 120px;
+}
+
+.add-button {
+  height: 40px;
+  width: 120px;
 }
 
 input, textarea, select {
