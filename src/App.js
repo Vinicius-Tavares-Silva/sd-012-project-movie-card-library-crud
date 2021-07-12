@@ -17,7 +17,9 @@ function App() {
         <Route path="/movies/:id" component={ MovieDetails } />
         <Route component={ NotFound } />
       </Switch>
-      <Link to="movies/new">ADICIONAR CARTÃO</Link>
+      <div className="div-margin">
+        <Link className="addMovie" to="movies/new">ADICIONAR CARTÃO</Link>
+      </div>
     </Router>
   );
 }
