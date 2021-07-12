@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
-// import movies from '../services/movieData';
 import * as movieAPI from '../services/movieAPI';
+import { Loading } from '../components';
 
 class MovieList extends Component {
   constructor() {
@@ -20,8 +20,9 @@ class MovieList extends Component {
 
   async fetchM() {
     const fetchMovies = await movieAPI.getMovies();
+
     this.setState({
-      movies: [...fetchMovies],
+      movies: fetchMovies,
       loading: false,
     });
     const { movies } = this.state;
@@ -30,7 +31,7 @@ class MovieList extends Component {
 
   render() {
     const { movies, loading } = this.state;
-    if (loading) return <h1>Carregando...</h1>;
+    if (loading) return <Loading />;
 
     return (
       <div data-testid="movie-list">
