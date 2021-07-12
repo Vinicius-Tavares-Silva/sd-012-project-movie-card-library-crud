@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Loading } from '../components';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { MovieForm } from '../components';
+import { Loading, MovieForm } from '../components';
+
 import { updateMovie, getMovie } from '../services/movieAPI';
 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: '',
       shouldRedirect: false,
       movie: '',
       load: true,
@@ -25,22 +25,22 @@ class EditMovie extends Component {
     const { match } = this.props;
     const { id } = match.params;
     const data = await getMovie(id);
-    this.setState({ movie: data, load: false})
+    this.setState({ movie: data, load: false });
   }
 
   async handleSubmit(movie) {
     const newMovie = await updateMovie(movie);
-    this.setState({ movie: [...newMovie], shouldRedirect: true})
+    this.setState({ movie: [...newMovie], shouldRedirect: true });
   }
 
   render() {
     const { shouldRedirect, movie, load } = this.state;
     if (shouldRedirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
 
     if (load) {
-      return <Loading />
+      return <Loading />;
     }
 
     return (
@@ -50,5 +50,13 @@ class EditMovie extends Component {
     );
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default EditMovie;
