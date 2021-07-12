@@ -22,6 +22,8 @@ class MovieList extends Component {
     this.setState = () => {};
   }
 
+  // Solução do erro retirada desse link: https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
+
   async moviesFetchApi() {
     movieAPI.getMovies()
       .then((response) => this.setState({
@@ -36,7 +38,7 @@ class MovieList extends Component {
       return <Loading />;
     }
     return (
-      <div data-testid="movie-list">
+      <div className="movie-list" data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
         <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>

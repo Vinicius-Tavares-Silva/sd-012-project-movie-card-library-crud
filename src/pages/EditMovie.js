@@ -24,7 +24,9 @@ class EditMovie extends Component {
     this.setState = () => {};
   }
 
-  async handleSubmit(updatedMovie) {
+  // Solução do erro retirada desse link: https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
+
+  handleSubmit(updatedMovie) {
     movieAPI.updateMovie(updatedMovie)
       .then(() => this.setState({
         loading: false,
@@ -32,7 +34,7 @@ class EditMovie extends Component {
       }));
   }
 
-  async moviesFetchApi() {
+  moviesFetchApi() {
     const { match } = this.props;
     const { id } = match.params;
     movieAPI.getMovie(id)

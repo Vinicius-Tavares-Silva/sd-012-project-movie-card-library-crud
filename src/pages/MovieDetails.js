@@ -8,6 +8,7 @@ class MovieDetails extends Component {
   constructor() {
     super();
     this.moviesFetchApi = this.moviesFetchApi.bind(this);
+    this.movieDeleter = this.movieDeleter.bind(this);
     this.state = {
       movie: {},
       loading: true,
@@ -22,7 +23,9 @@ class MovieDetails extends Component {
     this.setState = () => {};
   }
 
-  async moviesFetchApi() {
+  // Solução do erro retirada desse link: https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
+
+  moviesFetchApi() {
     const { match } = this.props;
     const { id } = match.params;
     movieAPI.getMovie(id)
@@ -30,6 +33,12 @@ class MovieDetails extends Component {
         movie: response,
         loading: false,
       }));
+  }
+
+  movieDeleter() {
+    const { movie } = this.state;
+    const { id } = movie;
+    movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -54,9 +63,9 @@ class MovieDetails extends Component {
         <button type="button">
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         </button>
-        {/* <button type="button">
-          <Link to=''></Link>
-        </button> */}
+        <button type="button" onClick={ this.movieDeleter }>
+          <Link to="/">DELETAR</Link>
+        </button>
       </div>
     );
   }
