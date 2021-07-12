@@ -8,8 +8,6 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
 
-    this.fetchMoviesAPI = this.fetchMoviesAPI.bind(this);
-
     this.state = {
       loading: true,
       movie: [],
@@ -17,10 +15,10 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    this.fetchMoviesAPI();
+    this.fetchMovieAPI();
   }
 
-  async fetchMoviesAPI() {
+  async fetchMovieAPI() {
     const { match: { params: { id } } } = this.props;
     this.setState({ loading: true },
       async () => {
