@@ -8,6 +8,8 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
 
+    this.delMovie = this.delMovie.bind(this);
+
     this.state = {
       loading: true,
       movie: [],
@@ -30,6 +32,11 @@ class MovieDetails extends Component {
       });
   }
 
+  async delMovie() {
+    const { match: { params: { id } } } = this.props;
+    await movieAPI.deleteMovie(id);
+  }
+
   render() {
     // Change the condition to check the state
     const { loading, movie } = this.state;
@@ -48,6 +55,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.delMovie }>DELETAR</Link>
       </div>
     );
   }
