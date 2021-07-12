@@ -18,7 +18,7 @@ class MovieForm extends React.Component {
   }
 
   renderTitleInput() {
-    const { title } = this.state;
+    const { title = '' } = this.state;
 
     return (
       <div>
@@ -38,7 +38,7 @@ class MovieForm extends React.Component {
   }
 
   renderSubtitleInput() {
-    const { subtitle } = this.state;
+    const { subtitle = '' } = this.state;
 
     return (
       <div>
@@ -57,7 +57,7 @@ class MovieForm extends React.Component {
   }
 
   renderImagePathInput() {
-    const { imagePath } = this.state;
+    const { imagePath = '' } = this.state;
 
     return (
       <div className="row">
@@ -76,7 +76,7 @@ class MovieForm extends React.Component {
   }
 
   renderStorylineInput() {
-    const { storyline } = this.state;
+    const { storyline = '' } = this.state;
 
     return (
       <div>
@@ -93,7 +93,7 @@ class MovieForm extends React.Component {
   }
 
   renderGenreSelection() {
-    const { genre } = this.state;
+    const { genre = '' } = this.state;
     return (
       <div>
         <label htmlFor="movie_genre">
@@ -114,7 +114,7 @@ class MovieForm extends React.Component {
   }
 
   renderRatingInput() {
-    const { rating } = this.state;
+    const { rating = '' } = this.state;
     return (
       <div>
         <label htmlFor="movie_rating">
