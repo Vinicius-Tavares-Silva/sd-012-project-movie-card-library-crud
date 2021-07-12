@@ -19,11 +19,37 @@ body {
   text-align: center;
 }
 
+.movie-list-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
 .movie-list {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
   padding: 48px 30px;
+}
+
+.movie-add-list {
+  display: flex;
+  margin: 40px auto;
+}
+
+.page-btn {
+  background-color: green;
+  border-radius: 10px;
+  color: whitesmoke;
+  font-weight: 500;
+  margin: auto;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.page-btn:hover {
+  color: greenyellow;
+  font-weight: 800;
 }
 
 .movie-card {
@@ -33,6 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 450px;
+  justify-content: space-between;
   margin: 10px;
   overflow: hidden;
   width: 300px;
@@ -44,25 +71,29 @@ body {
 }
 
 .movie-card-body {
-  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  justify-content: space-between;
   padding: 20px;
 }
 
 .movie-card-title {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 500;
-  margin: 0 0 12px;
+  margin: auto 0;
 }
 
 .movie-card-subtitle {
   color: #6c757d;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
-  margin: 0 0 8px;
+  margin: auto 0;
 }
 
 .movie-card-storyline {
-  font-size: 14px;
+  font-size: 16px;
+  margin: auto 0;
   text-align: justify;
 }
 
