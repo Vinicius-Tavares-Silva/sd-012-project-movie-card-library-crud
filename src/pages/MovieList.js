@@ -17,7 +17,7 @@ class MovieList extends Component {
     this.renderMovies();
   }
 
-  // Render Loading here if the request is still happening
+  // Fazendo a requisição para a movieAPI
   async renderMovies() {
     const request = await movieAPI.getMovies();
     this.setState({ movies: request, loading: false });

@@ -23,6 +23,7 @@ class MovieDetails extends Component {
     const { match: { params: { id } } } = this.props;
     const movie = await movieAPI.getMovie(parseInt(id, 10));
     this.setState({ movie, loading: false });
+    // console.log({ match: { params: { id } } });
   }
 
   render() {
