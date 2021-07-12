@@ -9,9 +9,9 @@ class MovieDetails extends Component {
     super(props);
     this.state = {
       loading: true,
-      movie: {},
+      movie: [],
     };
-    this.fetchMovie = this.movieCard.bind(this);
+    // this.fetchMovie = this.movieCard.bind(this);
   }
 
   componentDidMount() {
