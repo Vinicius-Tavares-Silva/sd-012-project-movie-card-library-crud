@@ -30,12 +30,26 @@ class MovieDetails extends Component {
 
     if (loading) return <Loading />;
     return (
-      <div data-testid="movie-details">
-        <Link to={ `/movies/${id}/edit` }> EDITAR </Link>
-        <Link to="/"> VOLTAR </Link>
+      <div className="movie-details" data-testid="movie-details">
         {/* onClick for tirado do repositório de Thalles Carneiro em https://github.com/tryber/sd-012-project-movie-card-library-crud/pull/1/files */}
-        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }> DELETAR </Link>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <div className="movie-details-edit-delet-back">
+          <button className="button-moviedetails" type="button">
+            <Link
+              className="text-button"
+              to="/"
+              onClick={ () => movieAPI.deleteMovie(id) }
+            >
+              DELETAR
+            </Link>
+          </button>
+          <button className="button-moviedetails" type="button">
+            <Link className="text-button" to="/"> VOLTAR </Link>
+          </button>
+          <button className="button-moviedetails" type="button">
+            <Link className="text-button" to={ `/movies/${id}/edit` }> EDITAR </Link>
+          </button>
+        </div>
         <p>{ `Title: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>

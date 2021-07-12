@@ -23,6 +23,7 @@ class MovieForm extends React.Component {
     return (
       <div>
         <label htmlFor="movie_title">
+          Título
           <input
             placeholder="Insira o título"
             id="movie_title"
@@ -31,7 +32,6 @@ class MovieForm extends React.Component {
             value={ title }
             onChange={ (event) => this.updateMovie('title', event.target.value) }
           />
-          Título
         </label>
       </div>
     );
@@ -43,6 +43,7 @@ class MovieForm extends React.Component {
     return (
       <div>
         <label htmlFor="movie_subtitle">
+          Subtítulo
           <input
             placeholder="Insira o subtítulo"
             id="movie_subtitle"
@@ -50,7 +51,6 @@ class MovieForm extends React.Component {
             value={ subtitle }
             onChange={ (event) => this.updateMovie('subtitle', event.target.value) }
           />
-          Subtítulo
         </label>
       </div>
     );
@@ -62,6 +62,7 @@ class MovieForm extends React.Component {
     return (
       <div className="row">
         <label htmlFor="movie_image">
+          Imagem
           <input
             placeholder="Insira o caminho da imagem"
             id="movie_image"
@@ -69,7 +70,6 @@ class MovieForm extends React.Component {
             value={ imagePath }
             onChange={ (event) => this.updateMovie('imagePath', event.target.value) }
           />
-          Imagem
         </label>
       </div>
     );
@@ -97,7 +97,6 @@ class MovieForm extends React.Component {
     return (
       <div>
         <label htmlFor="movie_genre">
-          Gênero
           <select
             id="movie_genre"
             value={ genre }
@@ -108,6 +107,7 @@ class MovieForm extends React.Component {
             <option value="thriller">Suspense</option>
             <option value="fantasy">Fantasia</option>
           </select>
+          Gênero
         </label>
       </div>
     );
@@ -149,8 +149,8 @@ class MovieForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form>
+      <div className="div-form">
+        <form className="form-styles">
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
           {this.renderImagePathInput()}

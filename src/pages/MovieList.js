@@ -23,9 +23,15 @@ class MovieList extends Component {
     // Render Loading here if the request is still happening
     if (!movies.length) return <Loading />;
     return (
-      <div data-testid="movie-list">
-        <Link to="/movies/new"> ADICIONAR CARTÃO </Link>
-        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+      <div className="imagem-fundo" data-testid="movie-list">
+        <div className="adicionar-cartao">
+          <button className="botao-adicionar" type="button">
+            <Link to="/movies/new"> ADICIONAR CARTÃO </Link>
+          </button>
+        </div>
+        <div className="Movie-List">
+          {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
+        </div>
       </div>
     );
   }

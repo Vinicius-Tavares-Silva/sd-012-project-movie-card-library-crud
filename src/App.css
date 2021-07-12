@@ -1,5 +1,222 @@
-body {
-  background-color: whitesmoke;
-  box-sizing: border-box;
+.App {
+  background-size: cover;
+  background: linear-gradient(-45deg, #0b0c0c, #125269, #125269, #0b0c0c);
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-position: center;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
 }
 
+.imagem-fundo {
+  background: url('../src/pages/image.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 800;
+}
+
+.MovieCard {
+  background-color: rgb(212, 195, 195);
+  border-radius: 2px;
+  border: 3px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.418);
+  color: black;
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+  margin: 5px;
+  width: 300px;
+}
+
+@media ( max-width: 815px ) {
+  .body {
+    background-size: cover;
+    background: linear-gradient(-45deg, #0b0c0c, #125269, #125269, #0b0c0c);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .Movie-Card {
+    width: 100%;
+    background-color: rgb(128,128,128);
+  }
+}
+
+.body {
+  background-size: cover;
+  /* background: linear-gradient(-45deg, #0b0c0c, #125269, #125269, #0b0c0c); */
+  /* background-image: url('/home/cristiano/projetos/sd-012-project-movie-card-library-crud/public/images/background_Image.jpg'); */
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(79, 79, 79, 0.582);
+  padding: 10px;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 2px #00ffba;
+  font-size: xx-large;
+}
+
+.adicionar-cartao {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2px;
+  padding-top: 70px;
+  padding-bottom: 15px;
+  border: 1px;
+}
+
+.Movie-Card {
+  display: grid;
+  text-align: center;
+  margin: 1%;
+  padding: 2%;
+  width: 210px;
+  background-color: #95ffdb;
+  border: solid rgba(0, 0, 0, 0.445) 3px;
+  border-radius: 5px;
+  transition: width 2s, height 2s, transform 1s;
+  box-shadow: 1px 3px rgba(14, 14, 14, 0.062), 0.4em 0.4em 1em rgb(14, 14, 13);
+}
+
+.Movie-Card:hover {
+  transform: scale(1.1);
+  /* width: 10px; */
+  /* transition-delay: 0.1s; */
+  /* transform: rotate(360deg); */
+}
+
+.button-ver-detalhes {
+  justify-content: baseline;
+  border-radius: 4px;
+  height: 24px;
+  background-color: rgb(175, 166, 166);
+}
+
+.Movie-List {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.image {
+  width: 100%;
+}
+
+h3 {
+  text-align: center;
+  color: darkgreen;
+}
+
+.movie-details {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, darkblue, rgb(28, 151, 28));
+  padding: 70px;
+}
+
+.movie-details-edit-delet-back{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+}
+
+.button-moviedetails {
+  width: 50%;
+  background-color: black;
+}
+
+.text-button {
+  color: white;
+}
+
+.botao-adicionar {
+  background-color: rgb(82, 185, 151);
+  transition: width 2s, height 2s, transform 1s;
+}
+
+.botao-adicionar:hover {
+  transform: scale(1.1);
+}
+
+.button-ver-detalhes {
+  background-color: #50a286;
+  transition: width 2s, height 2s, transform 1s;
+}
+
+.button-ver-detalhes:hover {
+  transform: scale(1.1);
+}
+
+.div-new-movie {
+  background: linear-gradient(to bottom, darkblue, rgb(28, 151, 28));
+  padding-top: 70px;
+}
+
+.carregando{
+  font-size: xx-large;
+  font-weight: bolder;
+  color: white;
+  height: 100vh;
+  padding-top: 100px;
+  display: grid;
+  justify-items: center;
+  background: linear-gradient(to bottom, darkblue, rgb(28, 151, 28));
+
+  /* align-items: center; */
+}
+
+.div-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 20px;
+}
+
+.form-styles {
+  max-height: 350px;
+  margin: 0;
+  color: white;
+  width: 100%;
+  max-width: 250px;
+  background-color: #1a711a;
+  height: 100vh;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid;
+  margin: 20px 0 20px 0;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 20px rgb(255 255 255);
+}
+
+input, textarea {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.editmovie {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, darkblue, rgb(28, 151, 28));
+  padding: 70px;
+}
