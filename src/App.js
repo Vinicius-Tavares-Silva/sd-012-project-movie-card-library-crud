@@ -7,11 +7,11 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route path="/movies/new" component={ NewMovie } />
-          <Route exact path="/movies/:id/edit" component={ EditMovie } />
-          <Route path="/movies/:id" component={ MovieDetails } />
-          <Route path="/:error" component={ NotFound } />
           <Route exact path="/" component={ MovieList } />
+          <Route exact path="/movies/:id" component={ MovieDetails } />
+          <Route path="/movies/:id/edit" component={ EditMovie } />
+          <Route path="/:error" component={ NotFound } />
+          <Route path="/movies/new" component={ NewMovie } />
         </Switch>
       </BrowserRouter>
     </div>
