@@ -6,9 +6,18 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" render={ (props) => <MovieList { ...props } /> } />
+        {/* estruturado dessa maneira pelo tamanho máximo da linha ter excedido */}
+        <Route
+          exact
+          path="/"
+          render={ (props) => <MovieList { ...props } /> }
+        />
         <Route path="/movies/new" render={ (props) => <NewMovie { ...props } /> } />
-        <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
+        <Route
+          exact
+          path="/movies/:id"
+          render={ (props) => <MovieDetails { ...props } /> }
+        />
         <Route path="/movies/:id/edit" render={ (props) => <EditMovie { ...props } /> } />
         <Route><NotFound /></Route>
       </Switch>
