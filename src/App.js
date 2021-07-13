@@ -42,10 +42,7 @@ class App extends Component {
               (props) => <MovieDetails { ...props } />
             }
           />
-          <Route
-            path=""
-            component={ NotFound }
-          />
+          <Route><NotFound /></Route>
         </Switch>
       </Router>
     );
