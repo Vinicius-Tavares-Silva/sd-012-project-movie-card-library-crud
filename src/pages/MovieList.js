@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import MovieCard from '../components/MovieCard';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -25,8 +26,6 @@ class MovieList extends Component {
       movies: fetchMovies,
       loading: false,
     });
-    const { movies } = this.state;
-    console.log(movies);
   }
 
   render() {
@@ -40,5 +39,16 @@ class MovieList extends Component {
     );
   }
 }
+
+MovieList.propTypes = {
+  movies: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    imagePath: PropTypes.string,
+  }).isRequired,
+};
 
 export default MovieList;

@@ -1,60 +1,71 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor() {
+  constructor({ match }) {
     super();
+    this.fetchD = this.fetchD.bind(this);
 
     this.state = {
+      id: match.params.id,
       movies: [],
       loading: true,
     };
-    this.fetchM = this.fetchM.bind(this);
   }
 
   componentDidMount() {
-    this.fetchM();
+    this.fetchD();
   }
 
-  async fetchM() {
-    const fetchMovies = await movieAPI.getMovies();
+  async fetchD() {
+    const { id } = this.state;
+    const fetchMovies = await movieAPI.getMovie(id);
     this.setState({
-      movies: fetchMovies,
+      movies: { ...fetchMovies },
       loading: false,
     });
   }
 
   render() {
-    const { loading } = this.state;
+    const { movies, loading } = this.state;
+    const { title, id, subtitle, storyline, imagePath, rating, genre } = movies;
     if (loading) return <Loading />;
-
-    const { movies } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = movies;
 
     return (
       <div data-testid="movie-details">
         <p>{ `title: ${title}` }</p>
-        {console.log(movies)}
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+
       </div>
     );
   }
 }
 
+// MovieDetails.propTypes = {
+//   movie: PropTypes.shape({
+//     id: PropTypes.string.isRequired,
+//     title: PropTypes.string,
+//     subtitle: PropTypes.string,
+//     storyline: PropTypes.string,
+//     rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+//     imagePath: PropTypes.string,
+//   }).isRequired,
+// };
+
 MovieDetails.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    storyline: PropTypes.string,
-    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    imagePath: PropTypes.string,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
   }).isRequired,
 };
 
