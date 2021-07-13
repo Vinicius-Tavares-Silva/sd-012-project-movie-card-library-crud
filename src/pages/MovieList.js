@@ -22,7 +22,7 @@ class MovieList extends React.Component {
     return (
       <div data-testid="movie-list">
         { movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
-        { !movies.length ? <Loading /> : console.log('') }
+        { !movies.length ? <Loading /> : () => console.log('Erro!') }
       </div>
     );
   }
