@@ -7,7 +7,6 @@ import * as movieAPI from '../services/movieAPI';
 class MovieList extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       movies: [],
       loadingStatus: true,
@@ -16,7 +15,8 @@ class MovieList extends Component {
 
   componentDidMount() {
     movieAPI.getMovies()
-      .then((resolve) => this.setState({ movies: resolve, loadingStatus: false }));
+      .then((resolve) => this.setState({ movies: resolve, loadingStatus: false }))
+      .catch();
   }
 
   render() {

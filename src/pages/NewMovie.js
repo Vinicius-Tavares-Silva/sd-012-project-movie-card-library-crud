@@ -13,18 +13,18 @@ class NewMovie extends Component {
   }
 
   async handleSubmit(newMovie) {
+    await movieAPI.createMovie(newMovie);
     this.setState({
       shouldRedirect: true,
     });
-    await movieAPI.createMovie(newMovie);
   }
 
   render() {
     const { shouldRedirect } = this.state;
+    if (shouldRedirect) return <Redirect to="/" />;
     return (
       <div data-testid="new-movie">
         <MovieForm onSubmit={ this.handleSubmit } />
-        {shouldRedirect && <Redirect to="/" />}
       </div>
     );
   }
