@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Switch, Link } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import NewMovie from './pages/NewMovie';
@@ -17,6 +17,7 @@ class App extends Component {
           <Route exact path="/" component={ MovieList } />
           <Route exact path="/*" component={ NotFound } />
         </Switch>
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </BrowserRouter>
     );
   }
