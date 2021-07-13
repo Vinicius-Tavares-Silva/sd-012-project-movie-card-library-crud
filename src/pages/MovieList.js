@@ -20,10 +20,10 @@ class MovieList extends Component {
 
   async fetchMovies() {
     const movies = await getMovies();
-    this.setState((prevState) => ({
-      movies: [...prevState.movies, ...movies],
+    this.setState({
+      movies,
       isLoading: false,
-    }));
+    });
   }
 
   render() {

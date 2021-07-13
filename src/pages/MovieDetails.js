@@ -10,7 +10,7 @@ class MovieDetails extends Component {
 
     this.state = {
       isLoading: true,
-      movieCard: {},
+      movie: {},
     };
 
     this.fetchDetails = this.fetchDetails.bind(this);
@@ -23,9 +23,10 @@ class MovieDetails extends Component {
 
   async fetchDetails(id) {
     const details = await getMovie(id);
+    console.log(details);
     this.setState({
       isLoading: false,
-      movieCard: details,
+      movie: details,
     });
   }
 
@@ -36,8 +37,8 @@ class MovieDetails extends Component {
       return <Loading />;
     }
 
-    const { movieCard } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movieCard;
+    const { movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
