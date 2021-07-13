@@ -7,10 +7,10 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/" render={ (props) => <MovieList { ...props } /> } />
-        <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
         <Route path="/movies/new" render={ (props) => <NewMovie { ...props } /> } />
+        <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
         <Route path="/movies/:id/edit" render={ (props) => <EditMovie { ...props } /> } />
-        <Route path="/:notfound" render={ (props) => <NotFound { ...props } /> } />
+        <Route><NotFound /></Route>
       </Switch>
     </BrowserRouter>
   );
