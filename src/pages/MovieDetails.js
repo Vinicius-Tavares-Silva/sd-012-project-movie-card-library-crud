@@ -8,23 +8,19 @@ class MovieDetails extends React.Component {
   constructor(props) {
     super(props);
 
+    this.deleteMovie = this.deleteMovie.bind(this);
+
     this.state = {
       movie: {},
       loading: true,
     };
   }
 
-  // Change the condition to check the state
-  // if (true) return <Loading />;
   componentDidMount() {
     this.getMovieApi();
-  // movieAPI.getMovie(id).then((resolve) => this.setState({
-  //   movie: resolve,
-  //   loading: false,
-  // }));
   }
-  // console.log(this.props.match.params);
 
+  // função feita com a ajuda do colega Gabriel Viana!
   async getMovieApi() {
     const { match: { params: { id } } } = this.props;
     this.setState({ loading: true },
@@ -35,6 +31,11 @@ class MovieDetails extends React.Component {
           movie,
         });
       });
+  }
+
+  async deleteMovie() {
+    const { movie: { id } } = this.state;
+    await movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -55,6 +56,13 @@ class MovieDetails extends React.Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link
+          to="/"
+          onClick={ this.deleteMovie }
+        >
+          DELETAR
+
+        </Link>
       </div>
     );
   }
