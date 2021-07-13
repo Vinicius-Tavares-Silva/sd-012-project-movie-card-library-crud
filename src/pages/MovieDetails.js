@@ -12,6 +12,8 @@ class MovieDetails extends Component {
       isLoading: true,
       movieCard: {},
     };
+
+    this.fetchDetails = this.fetchDetails.bind(this);
   }
 
   componentDidMount() {
@@ -22,33 +24,30 @@ class MovieDetails extends Component {
   async fetchDetails(id) {
     const details = await getMovie(id);
     this.setState({
-      movieCard: details,
       isLoading: false,
+      movieCard: details,
     });
   }
 
   render() {
-    const { movieCard, isLoading } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movieCard;
+    const { isLoading } = this.state;
 
     if (isLoading) {
       return <Loading />;
     }
 
+    const { movieCard } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movieCard;
     return (
       <div data-testid="movie-details">
-        <h4>{title}</h4>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
+        <h4>{title}</h4>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <button type="button">
-          <Link to="/">VOLTAR</Link>
-        </button>
-        <button type="button">
-          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        </button>
+        <Link to="/">VOLTAR</Link>
+        <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
       </div>
     );
   }
