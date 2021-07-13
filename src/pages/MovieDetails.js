@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getMovie } from '../services/movieAPI';
 import Loading from '../components/Loading';
 
@@ -25,10 +26,8 @@ class MovieDetails extends Component {
       isLoading: false,
     });
   }
-  
+
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
     const { movieCard, isLoading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movieCard;
 
@@ -54,5 +53,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
