@@ -14,12 +14,12 @@ class EditMovie extends Component {
       shouldRedirect: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.fetchDetails = this.fetchDetails.bind(this);
+    this.fetchDetailsId = this.fetchDetailsId.bind(this);
   }
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    this.fetchDetails(id);
+    this.fetchDetailsId(id);
   }
 
   async handleSubmit(updatedMovie) {
@@ -31,7 +31,7 @@ class EditMovie extends Component {
     });
   }
 
-  async fetchDetails(id) {
+  async fetchDetailsId(id) {
     const details = await getMovie(id);
     this.setState({
       status: false,
