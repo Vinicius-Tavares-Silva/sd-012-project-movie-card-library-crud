@@ -31,13 +31,11 @@ class MovieDetails extends Component {
     const { movie: { id } } = this.state;
     await movieAPI.deleteMovie(id);
   }
-  
   render() {
     const { movie } = this.state;
     if (!movie) return <Loading />;
 
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-    
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
