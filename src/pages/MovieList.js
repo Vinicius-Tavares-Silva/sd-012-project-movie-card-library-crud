@@ -10,22 +10,22 @@ class MovieList extends Component {
     this.state = {
       movies: [],
     };
-  };
+    this.fetchAPI = this.fetchAPI.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchAPI();
+  }
 
   async fetchAPI() {
     const moviesPromise = await movieAPI.getMovies();
     this.setState({
       movies: moviesPromise,
-   });
-  }
-
-  componentDidMount() {
-   this.fetchAPI();
+    });
   }
 
   render() {
     const { movies } = this.state;
-    console.log(movies);
 
     if (movies.length === 0) {
       return <Loading />;

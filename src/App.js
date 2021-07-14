@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { NotFound } from 'http-errors';
+import NotFound from './pages/NotFound';
 import MovieDetails from './pages/MovieDetails';
 import MovieList from './pages/MovieList';
 import NewMovie from './pages/NewMovie';
@@ -10,11 +10,15 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route patch="/" exact component={ MovieList } />
-        <Route patch="/movies/:id" exact component={ MovieDetails } />
-        <Route patch="/movies/new" exact component={ NewMovie } />
-        <Route patch="/movies/:id/edit" exact component={ EditMovie } />
-        <Route patch="" component={ NotFound } />
+        <Route path="/" exact component={ MovieList } />
+        <Route
+          path="/movies/:id"
+          exact
+          component={ MovieDetails }
+        />
+        <Route path="/movies/new" exact component={ NewMovie } />
+        <Route path="/movies/:id/edit" exact component={ EditMovie } />
+        <Route path="*" component={ NotFound } />
       </Switch>
     </Router>
   );
