@@ -1,15 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class MovieForm extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { ...props.movie };
+    super(props);    
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {
-    const { onSubmit } = this.props;
+  handleSubmit() {    
     onSubmit(this.state);
   }
 
