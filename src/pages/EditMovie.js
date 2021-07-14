@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { MovieForm } from '../components';
+import { Loading, MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
@@ -48,7 +48,7 @@ class EditMovie extends Component {
     }
 
     if (status === 'loading') {
-      return <span>Carregando...</span>;
+      return <Loading />;
     }
 
     return (
