@@ -3,42 +3,47 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import movies from '../services/movieData';
 
 class MovieDetails extends Component {
   constructor() {
     super();
-    this.fetchMovieDetails = this.fetchMovieDetails.bind(this);
-    this.deleteMovie = this.deleteMovie.bind(this);
+
     this.state = {
-      loading: true,
-      movie: {},
+      details: undefined,
     };
+
+    this.requestDetails = this.requestDetails.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
-  componentDidMount() {
-    this.fetchMovieDetails();
+  async componentDidMount() {
+    const { match } = this.props;
+    const { id } = match.params;
+    return this.requestDetails(id);
   }
 
-  async fetchMovieDetails() {
-    const { match: { params: { id } } } = this.props;
-    const response = await movieAPI.getMovie(id);
-    this.setState({
-      movie: response,
-    });
+  async requestDetails(id) {
+    const { getMovie } = movieAPI;
+    const request = await getMovie(id)
+      .then((movie) => (
+        this.setState({
+          details: movie,
+        })
+      ));
+    return request;
   }
 
-  async deleteMovie() {
-    const { movie: { id } } = this.state;
-    await movieAPI.deleteMovie(id);
+  async delete() {
+    const { match } = this.props;
+    const { id } = match.params;
+    const { deleteMovie } = movieAPI;
+    await deleteMovie(id);
   }
 
   render() {
-    const { loading } = this.state;
-    if (!loading) { return <Loading />; }
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movies;
+    const { details } = this.state;
+    if (!details) { return <Loading />; }
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = details;
 
     return (
       <div data-testid="movie-details">
@@ -55,7 +60,7 @@ class MovieDetails extends Component {
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         </div>
         <div>
-          <Link to="/" onClick={ this.deleteMovie }> DELETAR </Link>
+          <Link to="/" onClick={ this.delete }> DELETAR </Link>
         </div>
       </div>
     );
