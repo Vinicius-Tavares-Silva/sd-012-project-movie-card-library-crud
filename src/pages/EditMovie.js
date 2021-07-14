@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
-import { MovieForm } from '../components';
+import { Redirect } from 'react-router';
+import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
@@ -9,36 +9,34 @@ class EditMovie extends Component {
     super(props);
     this.state = {
       status: 'loading',
-      movie: [],
       shouldRedirect: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this);
   }
 
   componentDidMount() {
-    const { match: { param: { id } } } = this.props;
-    const { getMovie } = movieAPI;
-    getMovie(id);
-    this.saveMovie();
+    this.fetchMovie();
   }
 
   handleSubmit(updatedMovie) {
-    const { createMovie } = movieAPI;
-    createMovie(updatedMovie);
-    this.setState({
-      movie: updateMovie,
-      shouldRedirect: true,
-    });
+    movieAPI.updateMovie(updatedMovie)
+      .then(() => this.setState({
+        shouldRedirect: true,
+      }));
   }
 
-  async saveMovie() {
-    const { match: { params: { id } } } = this.props;
-    const { getMovie } = movieAPI;
-    const selectedMovie = await getMovie(id);
-    this.setState({
-      status: 'loaded',
-      movie: selectedMovie,
-    });
+  fetchMovie() {
+    const { match } = this.props;
+    const { params } = match;
+    const { id } = params;
+    movieAPI.getMovie(id)
+      .then((correctMovie) => this.setState(
+        {
+          movie: correctMovie,
+          status: '',
+        },
+      ));
   }
 
   render() {
@@ -50,6 +48,7 @@ class EditMovie extends Component {
 
     if (status === 'loading') {
       // render Loading
+      return <Loading />;
     }
 
     return (
@@ -61,7 +60,11 @@ class EditMovie extends Component {
 }
 
 EditMovie.propTypes = {
-  match: PropTypes.objectOf(Object).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
 };
 
 export default EditMovie;
