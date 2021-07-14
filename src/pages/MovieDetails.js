@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
     super();
     this.state = {
-      loading: false,
       movie: '',
+      loading: false,
     };
   }
 
@@ -32,7 +33,6 @@ class MovieDetails extends Component {
   render() {
     const { movie, loading } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-    const loadingText = <span>Carregando...</span>;
     const loadedMovie = (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -47,7 +47,7 @@ class MovieDetails extends Component {
 
     return (
       <div>
-        {loading ? loadedMovie : loadingText}
+        {loading ? loadedMovie : <Loading />}
       </div>
     );
   }
