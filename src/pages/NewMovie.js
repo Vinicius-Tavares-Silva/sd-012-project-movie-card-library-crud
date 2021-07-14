@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-
+import { Redirect } from 'react-router-dom';
 import MovieForm from '../components/MovieForm';
-// import * as movieAPI from '../services/movieAPI';
+import * as movieAPI from '../services/movieAPI';
 
 class NewMovie extends Component {
   constructor(props) {
@@ -9,8 +9,13 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit() {
-    // newMovie
+  handleSubmit(newMovie) {
+    this.sendToAPI(newMovie);
+    return <Redirect to="/">Carregando...</Redirect>;
+  }
+
+  async sendToAPI(newMovie) {
+    await movieAPI.createMovie(newMovie);
   }
 
   render() {

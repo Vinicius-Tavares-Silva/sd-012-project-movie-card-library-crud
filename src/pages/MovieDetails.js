@@ -9,7 +9,7 @@ class MovieDetails extends Component {
     super(props);
 
     this.state = {
-      movie: '',
+      movie: undefined,
     };
     this.fetchAPI = this.fetchAPI.bind(this);
   }
@@ -32,7 +32,7 @@ class MovieDetails extends Component {
   render() {
     const { movie } = this.state;
 
-    if (movie === '') {
+    if (movie === undefined) {
       return <Loading />;
     }
 
