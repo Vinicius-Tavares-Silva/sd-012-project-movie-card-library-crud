@@ -8,9 +8,10 @@ class NewMovie extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  // newMovie
 
-  // handleSubmit(newMovie) {
-  // }
+  handleSubmit() {
+  }
 
   render() {
     return (
