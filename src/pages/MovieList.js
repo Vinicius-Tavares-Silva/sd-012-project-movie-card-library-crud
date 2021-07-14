@@ -11,29 +11,32 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-      isLoaded: false
+      isLoaded: false,
     };
-  }
-
-  fetchMovies() {
-    movieAPI.getMovies().then((response) => this.setState({ movies: response, isLoaded: true }));
   }
 
   componentDidMount() {
     this.fetchMovies();
   }
 
+  fetchMovies() {
+    movieAPI.getMovies().then((response) => this.setState({
+      movies: response,
+      isLoaded: true,
+    }));
+  }
+
   render() {
     const { movies, isLoaded } = this.state;
 
     if (!isLoaded) {
-      return <Loading />
+      return <Loading />;
     }
 
     return (
       <div data-testid="movie-list">
         <Link to="movies/new">ADICIONAR CARTÃO</Link>
-        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+        {movies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
   }

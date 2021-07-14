@@ -16,17 +16,17 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
+    const { match: { params: { id } } } = this.props;
     movieAPI.getMovie(id).then((response) => this.setState({
-        movie: response,
-        isLoaded: true,
-      }));
+      movie: response,
+      isLoaded: true,
+    }));
   }
 
   handleSubmit(updatedMovie) {
     movieAPI.updateMovie(updatedMovie).then(() => this.setState({
-        shouldRedirect: true,
-      }));
+      shouldRedirect: true,
+    }));
   }
 
   render() {
@@ -40,10 +40,26 @@ class EditMovie extends Component {
     }
     return (
       <div data-testid="edit-movie">
-        <MovieForm movie={movie} onSubmit={this.handleSubmit} />
+        <MovieForm movie={ movie } onSubmit={ this.handleSubmit } />
       </div>
     );
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+};
+
+EditMovie.defaultProps = {
+  match: {
+    params: {
+      id: '',
+    },
+  },
+};
 
 export default EditMovie;

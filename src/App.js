@@ -18,7 +18,7 @@ class App extends Component {
           <Route path="/movies/:id" component={ MovieDetails } />
           <Route component={ NotFound } />
         </Switch>
-      </BrowserRouter >
+      </BrowserRouter>
     );
   }
 }
