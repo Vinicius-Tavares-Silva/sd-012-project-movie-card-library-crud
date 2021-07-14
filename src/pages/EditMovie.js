@@ -18,7 +18,6 @@ class EditMovie extends Component {
   componentDidMount() {
     const { match: { param: { id } } } = this.props;
     const { getMovie } = movieAPI;
-
     getMovie(id);
     this.saveMovie();
   }
@@ -32,10 +31,21 @@ class EditMovie extends Component {
     });
   }
 
+  async saveMovie() {
+    const { match: { params: { id } } } = this.props;
+    const { getMovie } = movieAPI;
+    const selectedMovie = await getMovie(id);
+    this.setState({
+      status: 'loaded',
+      movie: selectedMovie,
+    });
+  }
+
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
       // Redirect
+      return <Redirect to="/" />;
     }
 
     if (status === 'loading') {
@@ -49,5 +59,9 @@ class EditMovie extends Component {
     );
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.objectOf(Object).isRequired,
+};
 
 export default EditMovie;
