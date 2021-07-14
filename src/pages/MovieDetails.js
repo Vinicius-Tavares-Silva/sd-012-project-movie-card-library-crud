@@ -28,11 +28,10 @@ class MovieDetails extends Component {
   }
 
   async fetchDetails(id) {
-    const details = await getMovie(id);
-    console.log(details);
+    const movie = await getMovie(id);
     this.setState({
       isLoading: false,
-      movie: details,
+      movie,
     });
   }
 
