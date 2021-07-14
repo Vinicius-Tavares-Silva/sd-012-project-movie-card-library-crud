@@ -11,7 +11,13 @@ class MovieList extends Component {
       movies: [],
     };
   }
-  
+
+  componentDidMount() {
+    const { getMovies } = movieAPI;
+    getMovies();
+    this.saveMovies();
+  }
+
   async saveMovies() {
     const { getMovies } = movieAPI;
     const moviesArray = await getMovies();
@@ -19,12 +25,6 @@ class MovieList extends Component {
       loading: false,
       movies: moviesArray,
     });
-  }
-
-  componentDidMount() {
-    const { getMovies } = movieAPI;
-    getMovies();
-    this.saveMovies();
   }
 
   render() {

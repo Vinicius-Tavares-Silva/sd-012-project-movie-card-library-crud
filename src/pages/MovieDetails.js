@@ -12,6 +12,13 @@ class MovieDetails extends Component {
     };
   }
 
+  componentDidMount() {
+    const { match: { params: { id } } } = this.props;
+    const { getMovie } = movieAPI;
+    getMovie(id);
+    this.saveMovie();
+  }
+
   async saveMovie() {
     const { match: { params: { id } } } = this.props;
     const { getMovie } = movieAPI;
@@ -20,13 +27,6 @@ class MovieDetails extends Component {
       loading: true,
       movie: selectedMovie,
     });
-  }
-
-  componentDidMount() {
-    const { match: { params: { id } } } = this.props;
-    const { getMovie } = movieAPI;
-    getMovie(id);
-    this.saveMovie();
   }
 
   render() {
