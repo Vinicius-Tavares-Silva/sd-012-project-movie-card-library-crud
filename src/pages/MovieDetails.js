@@ -12,6 +12,7 @@ class MovieDetails extends Component {
       movie: {},
       loading: true,
     };
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -24,8 +25,9 @@ class MovieDetails extends Component {
     });
   }
 
-  componentWillUnmount() {
-
+  deleteMovie() {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -63,6 +65,12 @@ class MovieDetails extends Component {
           to={ `/movies/${id}/edit` }
         >
           EDITAR
+        </Link>
+        <Link
+          onClick={ () => this.deleteMovie() }
+          to="/"
+        >
+          DELETAR
         </Link>
       </div>
     );
