@@ -33,6 +33,8 @@ class EditMovie extends Component {
         this.setState({
           shouldRedirect: data,
         });
+        const { movie } = this.state;
+        console.log(movie);
       });
   }
 
