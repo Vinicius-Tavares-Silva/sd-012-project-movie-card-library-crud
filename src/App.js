@@ -1,8 +1,12 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import MovieForm from './components/MovieForm';
 
 function App() {
   return (
-    <div>Movie Card Library CRUD</div>
+    <BrowserRouter>
+      <Route path="/movie-form" component={ MovieForm } />
+    </BrowserRouter>
   );
 }
 
