@@ -17,12 +17,12 @@ function App() {
           component={ MovieList }
         />
         <Route
-          path="/movies/new"
-          component={ NewMovie }
-        />
-        <Route
           path="/movies/:id/edit"
           component={ EditMovie }
+        />
+        <Route
+          path="/movies/new"
+          component={ NewMovie }
         />
         <Route
           path="/movies/:id"
