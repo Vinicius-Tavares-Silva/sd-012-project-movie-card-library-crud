@@ -11,6 +11,7 @@ class MovieDetails extends Component {
       movie: {},
       loading: true,
     };
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -23,14 +24,14 @@ class MovieDetails extends Component {
     });
   }
 
-  componentWillUnmount() {
-
+  deleteMovie() {
+    const { match: { params: { id } } } = this.props;
+    movieAPI.deleteMovie(id);
   }
 
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
-
     const {
       loading,
       movie: {
@@ -42,9 +43,7 @@ class MovieDetails extends Component {
         subtitle,
         id,
       } } = this.state;
-
     if (loading) return <Loading />;
-
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -63,11 +62,16 @@ class MovieDetails extends Component {
         >
           EDITAR
         </Link>
+        <Link
+          onClick={ () => this.deleteMovie() }
+          to="/"
+        >
+          DELETAR
+        </Link>
       </div>
     );
   }
 }
-
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -75,5 +79,4 @@ MovieDetails.propTypes = {
     }).isRequired,
   }).isRequired,
 };
-
 export default MovieDetails;
