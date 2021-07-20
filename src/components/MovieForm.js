@@ -169,7 +169,7 @@ MovieForm.propTypes = {
     subtitle: PropTypes.string,
     storyline: PropTypes.string,
     genre: PropTypes.string,
-    rating: PropTypes.string,
+    rating: PropTypes.number,
     imagePath: PropTypes.string,
     id: PropTypes.number,
   }).isRequired,
