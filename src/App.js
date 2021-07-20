@@ -14,12 +14,14 @@ class App extends Component {
           <h1>Movie Card Library CRUD</h1>
           <Switch>
             <Route exact path="/" component={ MovieList } />
-            <Route path="/movies/:id/edit" component={ EditMovie } />
             <Route path="/movies/new" component={ NewMovie } />
+            <Route path="/movies/:id/edit" component={ EditMovie } />
+
             <Route
               path="/movies/:id"
               render={ (props) => <MovieDetails { ...props } /> }
             />
+
             <Route path="" component={ NotFound } />
           </Switch>
         </BrowserRouter>
