@@ -1,3 +1,5 @@
+// Projeto realizado com a ajuda da sala de estudos, da Renata Nunes e do Diogo Sant'Anna;
+
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
