@@ -19,7 +19,6 @@ class NewMovie extends Component {
     movieAPI.createMovie(newMovie);
     this.setState({ redirect: true });
   }
-  // newMovie(PARAMETRO DA FUNÇAÕ HANDLESUBMIT)
 
   render() {
     const { redirect } = this.state;

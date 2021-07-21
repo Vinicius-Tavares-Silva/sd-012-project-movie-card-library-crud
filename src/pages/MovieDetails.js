@@ -10,10 +10,11 @@ class MovieDetails extends Component {
     super();
 
     this.state = {
-      movies: [],
+      movies: {},
       filmes: false,
     };
     this.showDetail = this.showDetail.bind(this);
+    this.handleDelet = this.handleDelet.bind(this);
   }
 
   async componentDidMount() {
@@ -22,8 +23,12 @@ class MovieDetails extends Component {
     this.showDetail(detail);
   }
 
+  async handleDelet(id) {
+    await movieAPI.deleteMovie(id);
+  }
+
   showDetail(detail) {
-    this.setState({ movies: detail, filmes: true });
+    this.setState({ movies: { ...detail }, filmes: true });
   }
 
   render() {
@@ -44,6 +49,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.handleDelet(id) }>DELETAR</Link>
       </div>
     );
   }
