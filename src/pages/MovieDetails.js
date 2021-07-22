@@ -28,6 +28,10 @@ class MovieDetails extends Component {
     });
   }
 
+  async deleteMovie(id) {
+    await movieAPI.deleteMovie(id);
+  }
+
   render() {
     const { movie, loading } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
@@ -42,6 +46,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }
