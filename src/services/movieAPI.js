@@ -1,4 +1,4 @@
-/* import data from './movieData';
+import data from './movieData';
 
 localStorage.setItem('movies', JSON.stringify(data));
 
@@ -68,4 +68,3 @@ export const deleteMovie = (movieId) => {
     simulateRequest({ status: SUCCESS_STATUS })(resolve);
   });
 };
- */

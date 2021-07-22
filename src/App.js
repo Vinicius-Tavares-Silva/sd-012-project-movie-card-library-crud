@@ -17,6 +17,11 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route
+              exact
+              path="/"
+              component={ MovieList }
+            />
+            <Route
               path="/movies/:id/edit"
               render={ () => (
                 <EditMovie />
@@ -35,12 +40,13 @@ class App extends Component {
               ) }
             />
             <Route
-              path="/"
-              render={ (props) => (
+              path="*"
+              component={ NotFound }
+              /* render={ (props) => (
                 <section>
                   <MovieList />
                   {(props.location.pathname === '/') ? <Redirect to="/" /> : <NotFound />}
-                </section>) }
+                </section>) } */
             />
           </Switch>
         </BrowserRouter>
