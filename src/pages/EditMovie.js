@@ -4,11 +4,11 @@ import React, { Component } from 'react';
 // import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+    // super(props);
     // this.state = {};
     // this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  // }
 
   // handleSubmit(updatedMovie) {
   // }
@@ -19,9 +19,9 @@ class EditMovie extends Component {
       // Redirect
     }
 
-    if (status === 'loading') {
-      // render Loading
-    }
+    // if (status === 'loading') {
+    //   // render Loading
+    // }
 
     return (
       <div data-testid="edit-movie">
