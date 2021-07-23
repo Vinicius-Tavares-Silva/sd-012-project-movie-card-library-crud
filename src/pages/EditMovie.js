@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { MovieForm } from '../components';
+import { Loading, MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
 
 class EditMovie extends Component {
   constructor(props) {
@@ -13,7 +12,7 @@ class EditMovie extends Component {
       shouldRedirect: false,
       movie: {},
     };
-  this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(updatedMovie) {
