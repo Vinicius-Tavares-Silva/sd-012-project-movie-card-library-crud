@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/movies/:id/edit" component={ EditMovie } />
         <Route path="*" component={ NotFound } />
       </Switch>
-  </BrowserRouter>
+    </BrowserRouter>
   );
 }
 
