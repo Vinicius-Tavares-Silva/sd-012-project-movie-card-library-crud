@@ -27,9 +27,7 @@ class EditMovie extends Component {
     }
 
     if (status === 'loading') {
-      Return (
-        <Loading />
-      );
+      return <Loading />;
     }
 
     return (
