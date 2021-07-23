@@ -1,4 +1,6 @@
 import React from 'react';
+import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages';
 
