@@ -35,8 +35,8 @@ class App extends Component {
             />
             <Route
               path="/movies/:id"
-              render={ () => (
-                <MovieDetails />
+              render={ (props) => (
+                <MovieDetails { ...props } />
               ) }
             />
             <Route
