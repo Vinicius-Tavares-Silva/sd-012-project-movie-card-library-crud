@@ -8,8 +8,8 @@ class NewMovie extends Component {
     super(props);
     this.state = {
       redirecting: false,
-    }
-  this.handleSubmit = this.handleSubmit.bind(this);
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(newMovie) {
