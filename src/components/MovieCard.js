@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 class MovieCard extends React.Component {
   render() {
-    const { movie } = this.props;
+    const { movie: { title, storyline, imagePath } } = this.props;
     return (
       <div data-testid="movie-card">
-        <p>{ movie.title }</p>
+        <img src={ imagePath } alt={ title } />
+        <p>{ title }</p>
+        <p>{ storyline }</p>
       </div>
     );
   }
