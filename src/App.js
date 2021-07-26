@@ -1,3 +1,5 @@
+// Iniciando o projeto #VQV
+
 import React from 'react';
 
 function App() {
