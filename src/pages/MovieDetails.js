@@ -11,6 +11,7 @@ class MovieDetails extends Component {
       movie: {},
       loading: true,
     };
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -19,7 +20,6 @@ class MovieDetails extends Component {
 
   handleRenderMovie(movie) {
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-    console.log(id);
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -30,6 +30,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }
@@ -40,13 +41,16 @@ class MovieDetails extends Component {
     this.setState({ loading: false, movie });
   }
 
+  async deleteMovie() {
+    const { movie: { id } } = this.state;
+    const deletedMovie = await movieAPI.deleteMovie(id);
+    console.log(deletedMovie);
+  }
+
   render() {
     const { movie, loading } = this.state;
     return (
-      <>
-        { loading ? <Loading /> : this.handleRenderMovie(movie)}
-        <p>s</p>
-      </>
+      loading ? <Loading /> : this.handleRenderMovie(movie)
     );
   }
 }
