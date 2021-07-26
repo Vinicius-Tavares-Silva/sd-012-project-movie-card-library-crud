@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import NewMovie from './pages/NewMovie';
@@ -49,6 +49,7 @@ class App extends Component {
                 </section>) } */
             />
           </Switch>
+          <Link to="/movies/new">ADICIONAR CARTÃO</Link>
         </BrowserRouter>
       </div>
     );
