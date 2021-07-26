@@ -29,7 +29,7 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     // if (true) return <Loading />;
     const { movie: { title, storyline, imagePath,
-      genre, rating, subtitle, id }, loading } = this.state;
+      genre, rating, subtitle, id }, loading, movie } = this.state;
     const wait = (loading ? <Loading /> : (
       <div>
         <h2>{`Title: ${title}`}</h2>

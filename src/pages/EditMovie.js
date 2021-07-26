@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loading from '../components/Loading';
 import { MovieForm } from '../components';
@@ -10,28 +11,33 @@ class EditMovie extends Component {
     super(props);
     this.state = {
       status: 'loading',
-      shouldRedirect: 0,
+      shouldRedirect: false,
       movie: {},
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  /* handleSubmit(updatedMovie) {
-  } */
-
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    movieAPI.updateMovie(id).then((movie) => this.setState({
+    movieAPI.getMovie(id).then((movie) => this.setState({
       movie,
     }, () => this.setState({
       status: 'load',
     })));
   }
 
+  handleSubmit(updatedMovie) {
+    movieAPI.updateMovie(updatedMovie).then(() => this.setState({
+      shouldRedirect: true,
+    }));
+  }
+
   render() {
     const { status, shouldRedirect, movie } = this.state;
+    console.log(movie);
     if (shouldRedirect) {
       // Redirect
+      return <Redirect to="/" />;
     }
 
     if (status === 'loading') {
@@ -40,7 +46,6 @@ class EditMovie extends Component {
         <Loading />
       );
     }
-    console.log(movie);
 
     return (
       <div data-testid="edit-movie">
