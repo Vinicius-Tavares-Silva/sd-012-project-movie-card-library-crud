@@ -19,6 +19,7 @@ class MovieDetails extends Component {
 
   handleRenderMovie(movie) {
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
+    console.log(id);
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
