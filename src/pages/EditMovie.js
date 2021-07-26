@@ -11,6 +11,8 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
+    const teste = movieAPI.getMovies();
+    console.log(updatedMovie, teste);
   }
 
   render() {
