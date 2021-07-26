@@ -14,7 +14,7 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    console.log(this.getAndStateMovies());
+    this.getAndStateMovies();
   }
 
   getAndStateMovies() {
