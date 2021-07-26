@@ -10,7 +10,7 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-      loading: true,
+      loadingPage: true,
     };
     this.fetchMovies = this.fetchMovies.bind(this);
   }
@@ -22,16 +22,15 @@ class MovieList extends Component {
   async fetchMovies() {
     const fetchResult = await movieAPI.getMovies();
     this.setState({
-      loading: false,
+      loadingPage: false,
       movies: fetchResult,
     });
   }
 
   render() {
-    const { movies } = this.state;
-    const { loading } = this.state;
+    const { movies, loadingPage } = this.state;
 
-    if (loading === true) {
+    if (loadingPage === true) {
       return <Loading />;
     }
     return (
