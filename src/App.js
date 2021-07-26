@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import NewMovie from './pages/NewMovie';
@@ -11,11 +11,13 @@ function App() {
     <header>
       <div>Movie Card Library CRUD</div>
       <BrowserRouter>
-        <Route path="/" render={ () => <MovieList /> } />
-        <Route path="/movies/:id" render={ () => <MovieDetails /> } />
-        <Route path="/movies/new" render={ () => <NewMovie /> } />
-        <Route path="/movies/:id/edit" render={ () => <EditMovie /> } />
-        <Route render={ () => <NotFound /> } />
+        <Switch>
+          <Route path="/movies/:id/edit" render={ () => <EditMovie /> } />
+          <Route path="/movies/new" render={ () => <NewMovie /> } />
+          <Route path="/movies/:id" render={ () => <MovieDetails /> } />
+          <Route exact path="/" render={ () => <MovieList /> } />
+          <Route path="*" render={ () => <NotFound /> } />
+        </Switch>
       </BrowserRouter>
     </header>
   );
