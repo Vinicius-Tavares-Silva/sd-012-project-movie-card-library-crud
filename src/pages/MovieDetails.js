@@ -16,6 +16,7 @@ class MovieDetails extends Component {
 
     this.takeMovies = this.takeMovies.bind(this);
     this.details = this.details.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +33,12 @@ class MovieDetails extends Component {
     });
   }
 
+  deleteMovie() {
+    const { match: { params: { id } } } = this.props;
+
+    movieAPI.deleteMovie(id);
+  }
+
   details() {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
@@ -45,6 +52,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link to="/" onClick={ this.deleteMovie }>DELETAR</Link>
       </div>
     );
   }
