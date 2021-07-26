@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
+import Loading from '../components/Loading';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.fetchMovieDetails = this.fetchMovieDetails.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
     this.state = {
       movie: {},
+      loading: true,
     };
   }
 
@@ -24,6 +25,7 @@ class MovieDetails extends Component {
     const response = await movieAPI.getMovie(id);
     this.setState({
       movie: response,
+      loading: false,
     });
   }
 
@@ -35,8 +37,8 @@ class MovieDetails extends Component {
   // Esse requisito eu fiz com muito custo vendo e revendo as aulas do course e verifiquei para saber se estava entendendo o que estava pedindo para fazer no commit da Cristina Pineda.
   render() {
     // Change the condition to check the state
-    const { movie } = this.state;
-    if (!movie) return <Loading />;
+    const { movie, loading } = this.state;
+    if (loading) return <Loading />;
 
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
