@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import PropTypes from 'prop-types';
 
 class MovieCard extends React.Component {
@@ -15,6 +15,7 @@ class MovieCard extends React.Component {
 
 MovieCard.propTypes = {
   movies: PropTypes.shape(PropTypes.object).isRequired,
-}
+};
 
 export default MovieCard;
+ */
