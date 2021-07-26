@@ -30,6 +30,7 @@ class MovieDetails extends Component {
     // if (true) return <Loading />;
     const { movie: { title, storyline, imagePath,
       genre, rating, subtitle, id }, loading } = this.state;
+
     const wait = (loading ? <Loading /> : (
       <div>
         <h2>{`Title: ${title}`}</h2>
@@ -40,6 +41,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <div className="linkDetails">
           <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+          <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
           <Link to="/">VOLTAR</Link>
         </div>
       </div>
