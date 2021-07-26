@@ -10,31 +10,39 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-      flag: true,
+      loading: true,
     };
     this.callMovieList = this.callMovieList.bind(this);
   }
 
-  componentDidMount() {
-    this.callMovieList();
+  async componentDidMount() {
+    const { getMovies } = movieAPI;
+    const fatchMovies = await getMovies();
+    this.getMovies(fatchMovies);
   }
 
-  async callMovieList() {
+  async getMovies() {
     const apiMovieList = await movieAPI.getMovies();
     this.setState({
       movies: apiMovieList,
-      flag: false,
+      loading: false,
+    });
+  }
+
+  callMovieList(otherMovies) {
+    this.setState({
+      movies: otherMovies,
+      loading: false,
     });
   }
 
   render() {
-    const { movies, flag } = this.state;
-    console.log(flag);
+    const { movies, loading } = this.state;
     return (
       <div data-testid="movie-list">
         <Link to="movies/new">ADICIONAR CARTÃO</Link>
-        { flag ? <Loading /> : movies
-          .map((movie) => <movieCard key={ movie.title } movie={ movie } />)}
+        { loading ? <Loading /> : movies
+          .map((movie) => <MovieCard key={ movie.title } movie={ movie } />)}
       </div>
     );
   }
