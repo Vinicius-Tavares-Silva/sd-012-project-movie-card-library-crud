@@ -1,5 +1,5 @@
 import React from 'react';
-
+// Initial commit
 class MovieCard extends React.Component {
   render() {
     return (
