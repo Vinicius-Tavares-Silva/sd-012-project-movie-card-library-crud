@@ -32,7 +32,7 @@ class App extends React.Component {
             path="/movies/:id/edit"
             render={ (props) => <EditMovie { ...props } /> }
           />
-          <Route path="" Component={ NotFound } />
+          <Route><NotFound /></Route>
         </Switch>
       </BrowserRouter>
     );
