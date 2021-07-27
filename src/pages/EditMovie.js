@@ -26,8 +26,8 @@ class EditMovie extends Component {
   }
 
   fetchMovie() {
-    const { macth } = this.props;
-    const { id } = macth.params;
+    const { match } = this.props;
+    const { id } = match.params;
     getMovie(id)
       .then((resolve) => this.setState({
         movie: resolve,
@@ -50,7 +50,7 @@ class EditMovie extends Component {
 }
 
 EditMovie.propTypes = {
-  macth: PropTypes.shape({
+  match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
     }),
