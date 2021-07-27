@@ -29,3 +29,5 @@ function App() {
 }
 
 export default App;
+
+// Recebi ajuda do Miguel Retroz para entender a lógica do Requisito 1. https://github.com/MiguelRetroz
