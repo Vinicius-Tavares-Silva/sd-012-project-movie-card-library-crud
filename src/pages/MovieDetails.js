@@ -22,7 +22,6 @@ class MovieDetails extends Component {
     this.setState({
       isLoading: true,
     }, async () => {
-      console.log(this.props);
       const { match } = this.props;
       const { params } = match;
       const movieDetailed = await movieAPI.getMovie(params.id);
@@ -51,8 +50,6 @@ class MovieDetails extends Component {
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
     const { isLoading } = this.state;
 
     return (
