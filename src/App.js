@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages';
 
 class App extends React.Component {
@@ -13,6 +13,7 @@ class App extends React.Component {
           <Route path="/movies/:id" component={ MovieDetails } />
           <Route path="*" component={ NotFound } />
         </Switch>
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </BrowserRouter>
     );
   }
