@@ -65,3 +65,5 @@ EditMovie.propTypes = {
     }),
   }).isRequired,
 };
+
+// Recebi ajuda do Miguel Retroz para entender a lógica do projeto. https://github.com/MiguelRetroz

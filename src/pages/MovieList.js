@@ -37,3 +37,5 @@ class MovieList extends Component {
 export default MovieList;
 
 // consultei o repositório da Camila Damasio para entender o funcionamento da movieAPI https://github.com/tryber/sd-012-project-movie-card-library-crud/blob/camila-damasio-project-movie-card-library-crud/src/pages/MovieList.js
+
+// Recebi ajuda do Miguel Retroz para entender a lógica do projeto. https://github.com/MiguelRetroz

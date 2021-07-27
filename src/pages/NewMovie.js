@@ -10,3 +10,5 @@ class NewMovie extends Component {
   }
 }
 export default NewMovie;
+
+// Recebi ajuda do Miguel Retroz para entender a lógica do projeto. https://github.com/MiguelRetroz
