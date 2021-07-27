@@ -20,9 +20,9 @@ class EditMovie extends Component {
     const { id } = match.params;
     movieAPI.getMovie(id)
       .then((result) => {
-        console.log(result);
         this.setState({
           status: 'success',
+          movie: result,
         });
       });
   }
