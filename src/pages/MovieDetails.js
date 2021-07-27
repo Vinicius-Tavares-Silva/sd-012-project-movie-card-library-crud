@@ -23,10 +23,13 @@ class MovieDetails extends Component {
     }));
   }
 
+  movieDelete(deletedMovie) {
+    movieAPI.deleteMovie(deletedMovie);
+  }
+
   render() {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
-    // const { history: { push } } = this.props;
 
     if (title === undefined) {
       return <Loading />;
@@ -42,6 +45,12 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to="/">VOLTAR</Link>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+        <Link
+          onClick={ () => this.movieDelete(id) }
+          to="/"
+        >
+          DELETAR
+        </Link>
       </div>
     );
   }
