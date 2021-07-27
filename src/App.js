@@ -15,12 +15,12 @@ function App() {
         <Route
           exact
           path="/movies/new"
-          render={ (props) => <MovieDetails { ...props } /> }
+          render={ (props) => <NewMovie { ...props } /> }
         />
         <Route
           exact
           path="/movies/:id"
-          render={ (props) => <NewMovie { ...props } /> }
+          render={ (props) => <MovieDetails { ...props } /> }
         />
         <Route
           exact
