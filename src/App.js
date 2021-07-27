@@ -2,7 +2,15 @@ import React from 'react';
 
 function App() {
   return (
-    <div>Movie Card Library CRUD</div>
+    <Router>
+      <Switch>
+        <Route exact path="/" />
+        <Route path="/movies/new" />
+        <Route path="/movies/:id/edit" />
+        <Route path="/movies/:id" />
+        <Route path="*" />
+      </Switch>
+    </Router>
   );
 }
 
