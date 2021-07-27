@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import * as movieAPI from '../services/movieAPI';
+import { getMovie, deleteMovie } from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -23,7 +23,7 @@ class MovieDetails extends Component {
     const { match } = this.props;
     const { id } = match.params;
     this.setState({ loading: true });
-    const fechMovieApi = await movieAPI.getMovie(id);
+    const fechMovieApi = await getMovie(id);
     this.setState({
       movie: fechMovieApi,
       loading: false,
@@ -48,6 +48,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }
