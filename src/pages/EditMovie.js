@@ -12,27 +12,25 @@ class EditMovie extends Component {
       movie: {},
       flag: 'wait',
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.choiceMovie = this.choiceMovie.bind(this);
   }
-  // this.handleSubmit = this.handleSubmit.bind(this);
 
   componentDidMount() {
-    const { match: { params: { id } } } = this.props;
-    const number = +id;
-    movieAPI.getMovie(number).then((data) => {
-      this.setState({
-        flag: 'full',
-        movie: data,
-      });
-    });
+    this.choiceMovie();
   }
 
-  handleSubmit(updatedMovie) {
-    movieAPI.updateMovie(updatedMovie)
-      .then((data) => {
-        this.setState({ reverse: data });
-        const { movie } = this.state;
-        console.log(movie);
-      });
+  async handleSubmit(renewedMovie) {
+    const { updateMovie } = movieAPI;
+    await updateMovie(renewedMovie);
+    this.setState({ reverse: true });
+  }
+
+  async choiceMovie() {
+    const { match: { params: { id } } } = this.props;
+    const { getMovie } = movieAPI;
+    const movie = await getMovie(id);
+    this.setState({ movie, flag: 'Completed' });
   }
 
   render() {
@@ -42,7 +40,7 @@ class EditMovie extends Component {
       return <Redirect to="/" />;
     }
     if (flag === 'wait') {
-      return <Loading />;
+      return <Loading>Carregando...</Loading>;
     }
     return (
       <div data-testid="edit-movie">
