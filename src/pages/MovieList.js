@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
 
-// import * as movieAPI from '../services/movieAPI';
+import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
   constructor() {
@@ -10,6 +10,11 @@ class MovieList extends Component {
     this.state = {
       movies: [],
     };
+  }
+
+  // consultei o repositório da Camila Damasio para entender o funcionamento da movieAPI https://github.com/tryber/sd-012-project-movie-card-library-crud/blob/camila-damasio-project-movie-card-library-crud/src/pages/MovieList.js
+  componentDidMount() {
+    movieAPI.getMovies().then((result) => this.setState({ movies: result }));
   }
 
   render() {

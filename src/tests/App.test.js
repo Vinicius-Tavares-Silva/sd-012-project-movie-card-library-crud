@@ -21,14 +21,14 @@ const renderPath = (path) => {
 
 describe('1 - Renderize `BrowserRouter` no componente `App` usando rotas', () => {
 
-  test.skip('Será validado se a rota `/` renderiza a página MovieList', async () => {
+  test('Será validado se a rota `/` renderiza a página MovieList', async () => {
     const { unmount, getByTestId } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
     expect.anything(getByTestId('movie-list'));
     unmount();
   });
 
-  test.skip('Será validado se a rota `/movies/:id` renderiza a página MovieDetails', async () => {
+  test('Será validado se a rota `/movies/:id` renderiza a página MovieDetails', async () => {
     for (const movie of readMovies()) {
       const { unmount, getByTestId } = renderPath(`/movies/${movie.id}`);
       await waitFor(() => movieAPI.getMovies());
