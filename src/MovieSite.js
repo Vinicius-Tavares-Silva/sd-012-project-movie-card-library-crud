@@ -15,7 +15,7 @@ function MovieSite() {
             <Link to="/">Raíz</Link>
           </span>
           <span className="link-site">
-            <Link to="/movies/new">New Movie</Link>
+            <Link to="/movies/new">ADICIONAR CARTÃO</Link>
           </span>
           <span className="link-site">
             <Link to="/movies/:id">Details</Link>
