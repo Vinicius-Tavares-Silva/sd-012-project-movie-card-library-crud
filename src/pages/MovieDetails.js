@@ -12,11 +12,11 @@ class MovieDetails extends Component {
       loadingPage: true,
     };
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
     const { match } = this.props;
-    console.log(this.props);
     this.fetchMovie(match.params.id);
   }
 
@@ -28,13 +28,17 @@ class MovieDetails extends Component {
     });
   }
 
+  deleteMovie(id) {
+    movieAPI.deleteMovie(id);
+  }
+
   render() {
     const { movie, loadingPage } = this.state;
     if (loadingPage === true) {
       return <Loading />;
     }
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
     return (
       <div data-testid="movie-details">
@@ -46,6 +50,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${movie.id}/edit` }>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={ () => this.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }
