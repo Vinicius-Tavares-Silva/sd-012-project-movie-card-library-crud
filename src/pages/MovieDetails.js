@@ -12,14 +12,14 @@ class MovieDetails extends Component {
       movie: {},
       loading: true,
     };
-    this.fechMovieById = this.fechMovieById.bind(this);
+    this.fetchMovieById = this.fetchMovieById.bind(this);
   }
 
   componentDidMount() {
-    this.fechMovieById();
+    this.fetchMovieById();
   }
 
-  async fechMovieById() {
+  async fetchMovieById() {
     const { match } = this.props;
     const { id } = match.params;
     this.setState({ loading: true });
@@ -34,12 +34,12 @@ class MovieDetails extends Component {
     const { loading, movie } = this.state;
     const { match } = this.props;
     const { id } = match.params;
-    if (loading) return <Loading />;
 
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
 
     return (
       <div data-testid="movie-details">
+        { loading && <Loading /> }
         <img alt="Movie Cover" src={ `../${imagePath}` } />
         <p>{ `Título: ${title}` }</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
