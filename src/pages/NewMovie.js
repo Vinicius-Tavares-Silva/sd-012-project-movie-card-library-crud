@@ -1,14 +1,36 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import MovieForm from '../components/MovieForm';
+import * as movieAPI from '../services/movieAPI';
 
 class NewMovie extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = {
+      shouldRedirect: false,
+    };
+  }
+
+  handleSubmit(newMovie) {
+    movieAPI.createMovie(newMovie)
+      .then(() => {
+        this.setState({ shouldRedirect: true });
+      });
+
+    console.log(newMovie);
+  }
+
   render() {
+    const { shouldRedirect } = this.state;
+    if (shouldRedirect) return <Redirect to="/" />;
+
     return (
       <div data-testid="new-movie">
-        <p>Estou no NewMovie</p>
+        <MovieForm onSubmit={ this.handleSubmit } />
       </div>
     );
   }
 }
 export default NewMovie;
-
-// Recebi ajuda do Miguel Retroz para entender a lógica do projeto. https://github.com/MiguelRetroz
