@@ -12,8 +12,8 @@ class NewMovie extends Component {
     };
   }
 
-  handleSubmit(NewMovie) {
-    movieAPI.createMovie(NewMovie);
+  handleSubmit(newMovie) {
+    movieAPI.createMovie(newMovie);
     this.setState({
       shouldRedirect: true,
     });
