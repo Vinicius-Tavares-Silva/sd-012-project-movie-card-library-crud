@@ -7,13 +7,16 @@ class MovieForm extends React.Component {
     this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleSubmit() {
     const { onSubmit } = this.props;
     onSubmit(this.state);
   }
+
   updateMovie(field, newValue) {
     this.setState({ [field]: newValue });
   }
+
   renderTitleInput() {
     const { title } = this.state;
     return (
@@ -32,6 +35,7 @@ class MovieForm extends React.Component {
       </div>
     );
   }
+
   renderSubtitleInput() {
     const { subtitle } = this.state;
     return (
@@ -49,6 +53,7 @@ class MovieForm extends React.Component {
       </div>
     );
   }
+
   renderImagePathInput() {
     const { imagePath } = this.state;
     return (
@@ -66,6 +71,7 @@ class MovieForm extends React.Component {
       </div>
     );
   }
+
   renderStorylineInput() {
     const { storyline } = this.state;
     return (
@@ -81,6 +87,7 @@ class MovieForm extends React.Component {
       </div>
     );
   }
+
   renderGenreSelection() {
     const { genre } = this.state;
     return (
@@ -101,6 +108,7 @@ class MovieForm extends React.Component {
       </div>
     );
   }
+
   renderRatingInput() {
     const { rating } = this.state;
     return (
@@ -121,6 +129,7 @@ class MovieForm extends React.Component {
       </div>
     );
   }
+
   renderSubmitButton() {
     return (
       <div>
@@ -133,6 +142,7 @@ class MovieForm extends React.Component {
       </div>
     );
   }
+
   render() {
     return (
       <div>
