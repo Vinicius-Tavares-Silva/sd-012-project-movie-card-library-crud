@@ -35,7 +35,6 @@ class MovieDetails extends Component {
   }
 
   render() {
-   
     const { movie:
       { title, storyline, imagePath, genre, rating, subtitle, id },
     } = this.state;
@@ -60,5 +59,21 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+};
+
+MovieDetails.defaultProps = {
+  match: {
+    params: {
+      id: '',
+    },
+  },
+};
 
 export default MovieDetails;
