@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
+  constructor() {
+    super()
+    this.state = {
+      loading: true,
+      details: {},
+    }
+  }
+
+  componentDidMount() {
+    this.fetchDetails();
+  }
+
+  async fetchDetails() {
+    
+  }
+
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
