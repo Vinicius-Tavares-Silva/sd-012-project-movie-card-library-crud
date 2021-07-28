@@ -1,64 +1,59 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes, { number } from 'prop-types';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
     super();
+    this.fetchMovie = this.fetchMovie.bind(this);
     this.state = {
-      details: undefined,
+      movie: {},
+      loading: true,
     };
-
-    this.requestDetails = this.requestDetails.bind(this);
   }
 
-  async componentDidMount() {
-    const { match: { params: { id } } } = this.props;
-    return this.requestDetails(id);
+  componentDidMount() {
+    this.fetchMovie();
   }
 
-  async requestDetails(id) {
-    const { getMovie } = movieAPI;
-    const request = await getMovie(id)
-      .then((movie) => (
-        this.setState({
-          details: movie,
-        })
-      ));
-    return request;
+  async fetchMovie() {
+    const { match } = this.props;
+    const { id } = match.params;
+    const result = await movieAPI.getMovie(id);
+    this.setState({
+      movie: result,
+      loading: false,
+    });
   }
 
   render() {
-    const { details } = this.state;
-    if (!details) return <Loading />;
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = details;
+    const { loading } = this.state;
+    if (loading) {
+      return <Loading />;
+    }
+
+    const { movie } = this.state;
+    const { title, subtitle, imagePath, storyline, genre, rating, id } = movie;
     return (
       <div data-testid="movie-details">
-        <button type="button">
-          <Link to="/">VOLTAR</Link>
-        </button>
         <img alt="Movie Cover" src={ `../${imagePath}` } />
-        <h1>{ `Title: ${title}` }</h1>
+        <p>{ `Title: ${title}`}</p>
         <p>{ `Subtitle: ${subtitle}` }</p>
         <p>{ `Storyline: ${storyline}` }</p>
         <p>{ `Genre: ${genre}` }</p>
         <p>{ `Rating: ${rating}` }</p>
-        <button type="button">
-          <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-        </button>
+        <Link to={ `/movies/${movie.id}/edit` }> EDITAR </Link>
+        <Link to="/"> VOLTAR </Link>
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }
 }
 
-MovieDetails.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: number.isRequired,
-    }).isRequired,
-  }).isRequired,
-};
-
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.arrayOf.isRequired,
+};
