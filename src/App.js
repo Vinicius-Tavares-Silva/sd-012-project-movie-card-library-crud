@@ -9,11 +9,11 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Route exact path="/" component={ <MovieList /> } />
+        <Route exact path="/" component={ MovieList } />
         {// aqui vai route params}
         }
         <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
-        <Route path="/movies/new" component={ <NewMovie /> } />
+        <Route path="/movies/new" component={ NewMovie } />
         {// aqui tbm vai route params}
         }
         <Route path="/movies/:id/edit" render={ (props) => <EditMovie { ...props } /> } />
