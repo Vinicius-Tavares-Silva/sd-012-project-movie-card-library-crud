@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes, { number, string } from 'prop-types';
 
 class MovieCard extends React.Component {
   render() {
@@ -8,16 +8,24 @@ class MovieCard extends React.Component {
     const { title, storyline, id } = movie;
     return (
       <div data-testid="movie-card">
-        <h1>{ title }</h1>
+                <h1>{ title }</h1>
         <p>{ storyline }</p>
-        <Link to={ `/movies/${id}` }>VER DETALHES</Link>
+        <button type="button">
+          <Link to={ `movies/${id}` }>
+            VER DETALHES
+          </Link>
+        </button>
       </div>
     );
   }
 }
 
 MovieCard.propTypes = {
-  movie: PropTypes.objectOf(Object).isRequired,
+  movie: PropTypes.shape({
+    id: number.isRequired,
+    title: string.isRequired,
+    storyline: string.isRequired,
+  }).isRequired,
 };
 
 export default MovieCard;

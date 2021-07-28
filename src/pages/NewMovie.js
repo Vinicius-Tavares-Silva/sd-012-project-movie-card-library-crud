@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import MovieForm from '../components/MovieForm';
 
 class NewMovie extends Component {
@@ -7,7 +6,7 @@ class NewMovie extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  
   handleSubmit() {
   }
 

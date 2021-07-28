@@ -1,24 +1,21 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router } from 'react-router-dom';
-import MovieList from './pages/MovieList';
-import MovieDetails from './pages/MovieDetails';
-import NewMovie from './pages/NewMovie';
-import EditMovie from './pages/EditMovie';
-import NotFound from './pages/NotFound';
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages/index';
 
-function App() {
-  return (
-    <Router>
+class App extends Component {
+  render() {
+    return (
       <BrowserRouter>
-        <Route path="/" render={ (props) => <MovieList { ...props } /> } />
-        <Route path="/movies/:id" render={ (props) => <MovieDetails { ...props } /> } />
-        <Route path="/movies/:new" render={ (props) => <NewMovie { ...props } /> } />
-        <Route path="/movies/:id/edit" render={ (props) => <EditMovie { ...props } /> } />
-        <Route render={ (props) => <NotFound { ...props } /> } />
+        <Switch>
+          <Route exact path="/" component={ MovieList } />
+          <Route exact path="/movies/new" component={ NewMovie } />
+          <Route exact path="/movies/:id" component={ MovieDetails } />
+          <Route exact path="/movies/:id/edit" component={ EditMovie } />
+          <Route component={ NotFound } />
+        </Switch>
       </BrowserRouter>
-    </Router>
-  );
+    );
+  }
 }
 
 export default App;
