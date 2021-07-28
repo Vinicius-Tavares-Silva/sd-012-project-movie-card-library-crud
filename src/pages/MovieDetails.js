@@ -8,6 +8,7 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.alteraMovies = this.alteraMovies.bind(this);
+    this.deletaCard = this.deletaCard.bind(this);
     this.state = {
       movies: {},
       carregando: true,
@@ -25,6 +26,11 @@ class MovieDetails extends Component {
       movies: requisicao,
       carregando: false,
     });
+  }
+
+  async deletaCard() {
+    const { match: { params: { id } } } = this.props;
+    await movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -47,6 +53,9 @@ class MovieDetails extends Component {
             </button>
             <button type="button">
               <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+            </button>
+            <button type="button" onClick={ this.deletaCard }>
+              <Link to="/">DELETAR</Link>
             </button>
           </div>
         )}
