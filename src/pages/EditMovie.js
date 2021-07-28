@@ -60,4 +60,3 @@ export default EditMovie;
 EditMovie.propTypes = {
   match: PropTypes.arrayOf.isRequired,
 };
-  
