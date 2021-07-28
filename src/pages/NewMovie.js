@@ -22,10 +22,12 @@ class NewMovie extends Component {
 
   render() {
     const { shouldRedirect } = this.state;
-    const form = <MovieForm onSubmit={ this.handleSubmit } />;
+    if (shouldRedirect) {
+      return <Redirect to="/" />;
+    }
     return (
       <div data-testid="new-movie">
-        { shouldRedirect ? <Redirect to="/" /> : form }
+        <MovieForm onSubmit={ this.handleSubmit } />
       </div>
     );
   }

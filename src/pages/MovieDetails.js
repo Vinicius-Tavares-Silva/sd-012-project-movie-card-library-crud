@@ -30,13 +30,13 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie, loading } = this.state;
-    const { title, subtitle, imagePath, storyline, genre, rating } = movie;
-
-    if (loading === true) {
+    const { loading } = this.state;
+    if (loading) {
       return <Loading />;
     }
 
+    const { movie } = this.state;
+    const { title, subtitle, imagePath, storyline, genre, rating, id } = movie;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={ `../${imagePath}` } />
@@ -47,6 +47,7 @@ class MovieDetails extends Component {
         <p>{ `Rating: ${rating}` }</p>
         <Link to={ `/movies/${movie.id}/edit` }> EDITAR </Link>
         <Link to="/"> VOLTAR </Link>
+        <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>DELETAR</Link>
       </div>
     );
   }

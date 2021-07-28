@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import NewMovie from './pages/NewMovie';
@@ -14,16 +14,6 @@ class App extends React.Component {
         <Switch>
           <Route
             exact
-            path="/"
-            render={ (props) => <MovieList { ...props } /> }
-          />
-          <Route
-            exact
-            path="/movies/:id"
-            render={ (props) => <MovieDetails { ...props } /> }
-          />
-          <Route
-            exact
             path="/movies/new"
             render={ (props) => <NewMovie { ...props } /> }
           />
@@ -32,9 +22,18 @@ class App extends React.Component {
             path="/movies/:id/edit"
             render={ (props) => <EditMovie { ...props } /> }
           />
+          <Route
+            exact
+            path="/movies/:id"
+            render={ (props) => <MovieDetails { ...props } /> }
+          />
+          <Route
+            exact
+            path="/"
+            render={ (props) => <MovieList { ...props } /> }
+          />
           <Route><NotFound /></Route>
         </Switch>
-        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </BrowserRouter>
     );
   }
