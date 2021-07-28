@@ -174,5 +174,4 @@ MovieForm.defaultProps = {
   onSubmit: () => {},
 };
 
-
 export default MovieForm;
