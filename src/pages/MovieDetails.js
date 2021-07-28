@@ -7,11 +7,11 @@ import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       loading: false,
       details: {},
-    }
+    };
   }
 
   componentDidMount() {
@@ -28,8 +28,8 @@ class MovieDetails extends Component {
       this.setState({
         loading: false,
         details,
-      })
-    })
+      });
+    });
   }
 
   detailedMovie() {
@@ -59,12 +59,12 @@ class MovieDetails extends Component {
       <div>
         { loading ? <Loading /> : this.detailedMovie() }
       </div>
-    )
+    );
   }
 }
 
 MovieDetails.propTypes = {
   match: PropTypes.objectOf(PropTypes.object).isRequired,
-}
+};
 
 export default MovieDetails;

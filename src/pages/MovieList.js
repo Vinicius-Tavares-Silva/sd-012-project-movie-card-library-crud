@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 
@@ -11,7 +11,7 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-      loading: false
+      loading: false,
     };
   }
 
@@ -30,7 +30,6 @@ class MovieList extends Component {
       });
     });
   }
-
 
   render() {
     const { movies, loading } = this.state;
