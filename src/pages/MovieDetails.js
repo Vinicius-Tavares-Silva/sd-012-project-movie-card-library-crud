@@ -39,18 +39,22 @@ class MovieDetails extends Component {
     return (
       <div data-testid="movie-details">
         {movieRequest ? (
-          <div>
-            <img alt="Movie Cover" src={ `../${imagePath}` } />
-            <p>{ title }</p>
-            <p>{ `Subtitle: ${subtitle}` }</p>
-            <p>{ `Storyline: ${storyline}` }</p>
-            <p>{ `Genre: ${genre}` }</p>
-            <p>{ `Rating: ${rating}` }</p>
-            <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
-            <Link to="/">VOLTAR</Link>
-            <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>
-              DELETAR
-            </Link>
+          <div className="movie-card-details">
+            <img className="movie-card-image" alt="Movie Cover" src={ `../${imagePath}` } />
+            <div className="movie-card-body">
+              <p className="movie-card-title">{ title }</p>
+              <p className="movie-card-subtitle">{ `Subtitle: ${subtitle}` }</p>
+              <p className="movie-card-storyline">{ `Storyline: ${storyline}` }</p>
+              <p>{ `Genre: ${genre}` }</p>
+              <p className="rating">{ `${rating}` }</p>
+              <div className="btn-container">
+                <Link to={ `/movies/${id}/edit` }>EDITAR</Link>
+                <Link to="/" onClick={ () => movieAPI.deleteMovie(id) }>
+                  DELETAR
+                </Link>
+                <Link to="/">VOLTAR</Link>
+              </div>
+            </div>
           </div>
         ) : (
           <Loading />
