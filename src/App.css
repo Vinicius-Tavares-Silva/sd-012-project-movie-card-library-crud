@@ -378,6 +378,7 @@ textarea {
 @media screen and (max-width: 1366px){
   .movie-card-details {
     flex-direction: column;
+    width: 95%;
   }
   
   input {
